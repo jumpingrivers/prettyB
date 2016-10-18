@@ -1,5 +1,4 @@
 cache = new.env()
-cache$par = list()
 theme_set("expand")
 
 .onLoad = function(libname, pkgname){
@@ -7,5 +6,5 @@ theme_set("expand")
 }
 
 .onUnload = function(libpath) {
-  par(cache$op)
+#  par(cache$op)
 }
