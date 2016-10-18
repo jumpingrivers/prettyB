@@ -8,21 +8,22 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "graphics/README-"
 )
 ```
 
 ## Prettified Base Graphics
 
-Still work in progress. Load the package and get 
+Load the package and get 
 
 ```{r, message=FALSE}
 ## Masks a lot of base functions
-library(prettyB)
+library("prettyB")
 ```
 
 Compare
 ```{r}
+par(mfrow=c(1, 2))
 graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Sepal.Width)
 ```
@@ -31,12 +32,29 @@ Also have different themes:
 
 ```{r}
 theme_set("minimal")
-plot(iris$Sepal.Length, iris$Sepal.Width)
+plot(iris$Sepal.Length, iris$Sepal.Width, main="Classic Iris Dataset")
 ```
 
+## Other plots
 
-## Known issues
+The package also prettifies
 
-  * `qqnorm` doesn't work (see example.R)
-  * `par(mfrow=c(1, 2))`  no longer works
-  * `barplot` probably doesn't work
+  * barplots
+    ```{r}
+    barplot(table(iris$Species))
+    ```
+  * qqplots
+    ```{r}
+    qqnorm(rnorm(10))
+    ```
+  
+
+
+## TODO
+
+  * Think a bit more about palettes
+  * Boxplots
+  * Histograms
+    - Change default colour
+    - Change default method to Scott
+  * Bug fix: When the package builds, Rplots.pdf is generated!
