@@ -1,6 +1,7 @@
 is_x = function(chr) length(grep("x", chr)) > 0
 is_y = function(chr) length(grep("y", chr)) > 0
-
+# Extend axis for par(xaxs="i)
+extend_axis = function(lim, eps=0.02) lim + c(-1, 1)*diff(lim)*eps
 
 plot_minimal = function(x, y = NULL, ...) {
   ## Expand plot
@@ -22,12 +23,12 @@ plot_minimal = function(x, y = NULL, ...) {
   xlim = old_args$xlim
   ## Now check for log scales
   if(is.null(xlim) &&  is_x(old_args$log)) {
-      xlim = range(x_tmp) *1.05
+    xlim = extend_axis(range(x_tmp))
   }
 
   if(is.null(xlim)) {
     ticks_x = pretty(x_tmp)
-    xlim = range(ticks_x)*1.05
+    xlim = extend_axis(range(ticks_x))
   } else {
     ticks_x = pretty(c(xlim, x_tmp))
   }
@@ -35,19 +36,20 @@ plot_minimal = function(x, y = NULL, ...) {
   ylim = old_args$ylim
   ## Now check for log scales
   if(is.null(ylim) &&  is_y(old_args$log)) {
-    ylim = range(y_tmp) *1.05
+    ylim = extend_axis(range(y_tmp))
   }
 
   if(is.null(ylim)) {
     ticks_y = pretty(y_tmp)
-    ylim = range(ticks_y)*1.05
+    ylim = extend_axis(range(ticks_y))
   } else {
     ticks_y = pretty(c(ylim, y_tmp))
   }
 
   ## Change default args
   new_args = list(pch = 21, bg = 1, axes = FALSE, frame = FALSE,
-                  xlim = xlim, ylim = ylim)
+                  xlim = xlim, ylim = ylim,
+                  panel.first=substitute(abline(h = ticks_y, col = "grey90", lty = 2)))
   new_args[names(old_args)] = old_args
   new_args$main = NULL
 
@@ -66,7 +68,7 @@ plot_minimal = function(x, y = NULL, ...) {
   if(is.null(old_args$axes)) {
     # Add axis
     axis(2, ticks_y, ticks_y, tick = FALSE, las = 1)
-    abline(h = ticks_y, col = "grey90", lty = 2)
+  #  abline(h = ticks_y, col = "grey90", lty = 2)
     axis(1,ticks_x, ticks_x,
          tick = TRUE,
          lwd = 0,
