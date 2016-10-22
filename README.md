@@ -18,7 +18,7 @@ graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Sepal.Width)
 ```
 
-![](graphics/README-unnamed-chunk-3-1.png)
+<img src="graphics/README-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
 Also have different themes:
 
@@ -27,7 +27,7 @@ theme_set("minimal")
 plot(iris$Sepal.Length, iris$Sepal.Width, main="Classic Iris Dataset")
 ```
 
-![](graphics/README-unnamed-chunk-4-1.png)
+<img src="graphics/README-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 Other plots
 -----------
@@ -40,14 +40,14 @@ The package also prettifies
     barplot(table(iris$Species))
     ```
 
-    ![](graphics/README-unnamed-chunk-5-1.png)
+    <img src="graphics/README-unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
 -   qqplots
 
     ``` r
     qqnorm(rnorm(10))
     ```
 
-    ![](graphics/README-unnamed-chunk-6-1.png)
+    <img src="graphics/README-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 TODO
 ----

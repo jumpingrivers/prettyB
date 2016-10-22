@@ -8,7 +8,9 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "graphics/README-"
+  fig.path = "graphics/README-",
+  cache=FALSE,
+  fig.align='center'
 )
 ```
 
@@ -22,7 +24,7 @@ library("prettyB")
 ```
 
 Compare
-```{r}
+```{r, fig.width=12}
 par(mfrow=c(1, 2))
 graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Sepal.Width)
@@ -30,7 +32,7 @@ plot(iris$Sepal.Length, iris$Sepal.Width)
 
 Also have different themes:
 
-```{r}
+```{r, fig.width=6}
 theme_set("minimal")
 plot(iris$Sepal.Length, iris$Sepal.Width, main="Classic Iris Dataset")
 ```
