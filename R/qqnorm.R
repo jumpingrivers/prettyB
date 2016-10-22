@@ -1,4 +1,4 @@
-#' @export "qqnorm.default"
+#' @export
 qqnorm.default = function(y, ...) {
   theme = cache$theme
   if(theme == "expand") {
@@ -14,5 +14,5 @@ qqline = function(y, ...) {
   new_args = list(lty=3, col=2, lwd=2)
   old_args = list(...)
   new_args[names(old_args)] = old_args
-  do.call(stats:::qqline, c(list(substitute(y)), new_args))
+  do.call(stats::qqline, c(list(substitute(y)), new_args))
 }

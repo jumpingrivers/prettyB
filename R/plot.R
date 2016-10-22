@@ -1,18 +1,5 @@
-get_pretty_ticks = function(z, log) {
-
-  ## Pretty doesn't work on log scale
-  if(log) {
-    ticks = axTicks(side)
-  } else {
-    ticks = pretty(z)
-  }
-  return(ticks)
-}
-
-
-
-#' @importFrom graphics plot.default
-#' @export "plot.default"
+#' @importFrom graphics plot.default abline axTicks axis grid par title
+#' @export
 plot.default = function(x, y = NULL, ...) {
   theme = cache$theme
   if(theme == "expand") {

@@ -1,3 +1,4 @@
+#' @importFrom grDevices palette rgb
 #' @export
 set_palette = function(alpha = 1) {
   alpha=alpha*255
