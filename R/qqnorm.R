@@ -1,4 +1,4 @@
-#' @export
+#' @export "qqnorm.default"
 qqnorm.default = function(y, ...) {
   theme = cache$theme
   if(theme == "expand") {
