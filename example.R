@@ -13,3 +13,9 @@ qqnorm(rnorm(10))
 
 y = runif(10)
 qqnorm(y,  ylab="sdfsd")
+
+
+theme_set("minimal")
+x = rt(100, 2)
+hist(x)
+
