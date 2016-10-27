@@ -34,7 +34,8 @@ Also have different themes:
 
 ```{r, fig.width=6}
 theme_set("minimal")
-plot(iris$Sepal.Length, iris$Sepal.Width, main="Classic Iris Dataset")
+plot(iris$Sepal.Length, iris$Sepal.Width, main="Classic Iris Dataset", 
+     xlab="Length", ylab="Width")
 ```
 
 ## Other plots
@@ -49,7 +50,10 @@ The package also prettifies
     ```{r}
     qqnorm(rnorm(10))
     ```
-  
+  * Histograms
+    ```{r}
+    hist(rt(100, 2), main="100 RNs from the t-distribution")
+    ```
 
 
 ## TODO

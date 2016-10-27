@@ -24,7 +24,8 @@ Also have different themes:
 
 ``` r
 theme_set("minimal")
-plot(iris$Sepal.Length, iris$Sepal.Width, main="Classic Iris Dataset")
+plot(iris$Sepal.Length, iris$Sepal.Width, main="Classic Iris Dataset", 
+     xlab="Length", ylab="Width")
 ```
 
 <img src="graphics/README-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
