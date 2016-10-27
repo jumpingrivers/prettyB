@@ -3,7 +3,7 @@ is_y = function(chr) length(grep("y", chr)) > 0
 # Extend axis for par(xaxs="i)
 extend_axis = function(lim, eps=0.02) lim + c(-1, 1)*diff(lim)*eps
 
-plot_minimal = function(x, y = NULL, xlab, ylab, ...) {
+plot_minimal = function(x, y = NULL, ...) {
   ## Expand plot
   op = set_par_minimal()
   on.exit(par(op))
@@ -49,8 +49,7 @@ plot_minimal = function(x, y = NULL, xlab, ylab, ...) {
   ## Change default args
   new_args = list(pch = 21, bg = 1, axes = FALSE, frame = FALSE,
                   xlim = xlim, ylim = ylim,
-                  panel.first=substitute(abline(h = ticks_y, col = "grey90", lty = 2)),
-                  xlab=xlab, ylab=ylab)
+                  panel.first=substitute(abline(h = ticks_y, col = "grey90", lty = 2)))
   new_args[names(old_args)] = old_args
   new_args$main = NULL
 

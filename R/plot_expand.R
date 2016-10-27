@@ -1,5 +1,5 @@
 
-plot_expand = function(x, y = NULL, xlab, ylab, ...) {
+plot_expand = function(x, y = NULL, ...) {
 
   ## Set up par
   op = set_par_expand()
@@ -7,7 +7,7 @@ plot_expand = function(x, y = NULL, xlab, ylab, ...) {
 
   ## Now args
 
-  new_args = list(pch = 21, bg = 1, xlab = xlab, ylab=ylab)
+  new_args = list(pch = 21, bg = 1)
   old_args = list(...)
   new_args[names(old_args)] = old_args
   if (is.null(y))
