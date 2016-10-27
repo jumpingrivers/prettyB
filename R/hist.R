@@ -8,7 +8,9 @@ hist.default = function(x, ...) {
     old_args$xlab = deparse(substitute(x))
   }
 
-
+  if(is.null(old_args$main)) {
+    main = paste("Histogram of", deparse(substitute(x)))
+  }
 
   theme = cache$theme
   if(theme == "expand") {
