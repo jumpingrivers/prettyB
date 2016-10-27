@@ -8,7 +8,7 @@ hist_minimal = function(x, ...) {
 
 
   ## Now args
-  new_args = list(breaks = "Freedman-Diaconis", col=1)
+  new_args = list(breaks = "Freedman-Diaconis", col=1, border="white")
   new_args[names(old_args)] = old_args
 
   hist_out = do.call(graphics::hist.default, c(list(substitute(x)), new_args, list(plot=TRUE)))
@@ -18,7 +18,13 @@ hist_minimal = function(x, ...) {
   } else {
     ticks_y = pretty(hist_out$counts/sum(hist_out$counts))
   }
-  new_args$ylim = range(ticks_y)
+  if(is.null(old_args$ylim)) {
+    new_args$ylim = range(ticks_y)
+  }
+  ticks_x = pretty(hist_out$breaks)
+  if(is.null(old_args$xlim)) {
+    new_args$xlim = range(ticks_x)
+  }
   new_args$axes = FALSE
   new_args$main = ""
 
@@ -30,11 +36,11 @@ hist_minimal = function(x, ...) {
   abline(0,0)
   grid(NA, NULL, lwd=1, lty=1, col="#ffffff")
 
-  # axis(1,ticks_x, ticks_x,
-  #      tick = TRUE,
-  #      lwd = 0,
-  #      lwd.ticks = 1)
-  #
+  axis(1,ticks_x, ticks_x,
+       tick = TRUE,
+       lwd = 0,
+       lwd.ticks = 1)
+
   main = old_args$main
   if(is.null(old_args$main)) {
     main = paste("Histogram of", z$xname)
