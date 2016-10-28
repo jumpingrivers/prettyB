@@ -1,11 +1,12 @@
 Package: prettyB
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Pretty Base Graphics
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: person(given="Colin", family="Gillespie",
+    email="csgillespie@gmail.com", role = c("aut", "cre"))
+Maintainer: Colin Gillespie <csgillespie@gmail.com>
+Description: Modifications to standard base graphics. By masking function base function
+  calls, standard plots are able to have themes.
 License: GPL-2 | GPL-3
 Depends: graphics
 Imports: grDevices, stats
