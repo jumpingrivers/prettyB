@@ -3,6 +3,11 @@
 
 ## Prettified Base Graphics
 
+[![Build
+Status](https://travis-ci.org/jumpingrivers/prettyB.svg?branch=master)](https://travis-ci.org/jumpingrivers/prettyB)
+[![Coverage
+status](https://codecov.io/gh/jumpingrivers/prettyB/branch/master/graph/badge.svg)](https://codecov.io/github/jumpingrivers/prettyB?branch=master)
+
 Anyone who uses R Base graphics, have a 100 and 1 tweaks that they use
 to make the figures more presentable. This package aims to capture the
 tweaks in one place. By *masking* standard plotting functions, we can
