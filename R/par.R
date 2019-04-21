@@ -10,7 +10,8 @@ set_par = function(new_par) {
 }
 
 set_par_expand = function() {
-  par_exp = list(mar = c(3, 3, 2, 1), mgp = c(2, 0.4, 0),
+  par_exp = list(mar = c(3, 3, 2, 1),
+                 mgp = c(2, 0.4, 0),
                  tck = -.01,
                  cex.axis = 0.9, las = 1)
   set_par(par_exp)

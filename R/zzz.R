@@ -1,11 +1,30 @@
 cache = new.env()
-theme_set("expand")
+current = new.env()
 
+prettyB_pal = function(alpha = 255) {
+  c(rgb(85, 130, 169, alpha=alpha, maxColorValue=255),
+    rgb(200, 79, 178, alpha=alpha,maxColorValue=255),
+    rgb(105, 147,45, alpha=alpha, maxColorValue=255),
+    rgb(204, 74,83, alpha=alpha, maxColorValue=255),
+    rgb(183,110,39, alpha=alpha, maxColorValue=255),
+    rgb(131,108,192, alpha=alpha, maxColorValue=255),
+    rgb(63,142,96, alpha=alpha, maxColorValue=255))
+
+}
+
+#' @importFrom grDevices palette rgb
 .onLoad = function(libname, pkgname){
-  ## XXX: Don't like this. Should cache
-  set_palette(1)
+
+  # Cache current values
+  cache$palette = palette()
+  cache$par = par()
+
+  ## Set values
+  theme_set(theme = "minimal")
+  palette(prettyB_pal())
 }
 
 .onUnload = function(libpath) {
-#  par(cache$op)
+  par(cache$par)
+  palette(cache$palette)
 }

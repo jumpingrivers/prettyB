@@ -1,5 +1,7 @@
 ---
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -8,9 +10,9 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "graphics/README-",
-  cache=FALSE,
-  fig.align='center'
+  fig.path = "man/figures/README-",
+  cache = FALSE,
+  fig.align = 'center'
 )
 set.seed(1)
 ```
@@ -32,7 +34,6 @@ devtools::install_github("jumpingrivers/prettyB")
 The package can then be loaded in the usual way
 
 ```{r, message=FALSE}
-## Warning: base function masking
 library("prettyB")
 ```
 
@@ -41,7 +42,7 @@ library("prettyB")
 All plotting functions work exactly as before, with the same inputs. The difference 
 is that the defaults have been changed. For example, compare
 
-```{r, fig.width=12}
+```{r, plot-minimal,fig.width=12, fig.keep="none"}
 op = par(mfrow = c(1, 2))
 graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Sepal.Width)
@@ -49,11 +50,11 @@ plot(iris$Sepal.Length, iris$Sepal.Width)
 
 The second `plot()` function call is from the **prettyB** package.  
 
-There are currently two themes: `expand` (default) and `minimal`:
+There are currently two themes: `expand` and `minimal`(default):
 
-```{r, fig.width=12, echo=c(-1, -5)}
+```{r, plot-expand, fig.width=12, echo=c(-1, -5)}
+theme_set("expand")
 par(mfrow = c(1, 2))
-theme_set("minimal")
 graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width, 
      main="Classic Iris Dataset", xlab="Length", ylab="Width")
 plot(iris$Sepal.Length, iris$Sepal.Width, 
@@ -63,34 +64,53 @@ par(op)
 
 ## Other plots
 
-The package also prettifies other functions (examples below use the `minimal` theme).
+The package also prettifies other functions, currently only qqplots.
 
-  * barplots
-    ```{r, echo=-1}
-    par(mfrow = c(1, 2), cex=0.9)
-    graphics::barplot.default(VADeaths, main = "Death Rates in Virginia")
-    barplot(VADeaths, main = "Death Rates in Virginia")
-    ```
   * qqplots
-    ```{r, echo=-1}
+    ```{r, qqplots,echo=-1}
+    theme_set("minimal")
     par(mfrow = c(1, 2))
     x = rnorm(20)
     stats:::qqnorm.default(x)
     qqnorm(x)
     ```
-  * Histograms
-    ```{r, echo=-1}
-    par(mfrow=c(1, 2))
-    z = rt(100, 2)
-    graphics::hist.default(z, main="The t-distribution")
-    hist(z, main="The t-distribution")
-    ```
+  <!-- * Histograms -->
+  <!--   ```{r, echo=-1} -->
+  <!--   par(mfrow=c(1, 2)) -->
+  <!--   z = rt(100, 2) -->
+  <!--   graphics::hist.default(z, main="The t-distribution") -->
+  <!--   hist(z, main="The t-distribution") -->
+  <!--   ``` -->
+  <!-- * barplots -->
+  <!--   ```{r, echo=-1} -->
+  <!--   par(mfrow = c(1, 2), cex=0.9) -->
+  <!--   graphics::barplot.default(VADeaths, main = "Death Rates in Virginia") -->
+  <!--   barplot(VADeaths, main = "Death Rates in Virginia") -->
+  <!--   ``` -->
 
+## Package Rationale
 
-## TODO
+This package is __not__ a replacement for __ggplot2__ or other R related plotting packages. Instead, it has a few simple aims
 
+ * provide package authors a low dependency method of making their plots look pretty
+ * provide academics with a way of generating nice plots, but not worry about future changes in R
+ * provide a simple way for improving the look and feel of plots in teaching
+ 
+Since the generated plots by __prettyB__ use standard base graphics, with no new arguments, this makes plots future proof. As a fall-back, just don't load the package. 
+
+## Other information
+
+ * If you have any suggestions or find bugs, please use the github [issue tracker](https://github.com/jumpingrivers/prettyB/issues)
+ * Feel free to submit pull requests
+
+### TODO
+
+  * Box plots, barplots, histograms
   * Think a bit more about palettes
   * Vignettes: What defaults have been changed.
-  * Boxplots
-  * Package building: Can I ignore the warnings?
-  * Tests
+
+---
+
+Development of this package was supported by [Jumping Rivers](https://www.jumpingrivers.com)
+
+

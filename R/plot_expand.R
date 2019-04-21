@@ -1,6 +1,4 @@
-
 plot_expand = function(x, y = NULL, ...) {
-
   ## Set up par
   op = set_par_expand()
   on.exit(graphics::par(op))
