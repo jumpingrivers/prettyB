@@ -5,3 +5,4 @@
 ^README\.Rmd$
 Rplots.pdf
 ^.travis.yml$
+^cran-comments\.md$
