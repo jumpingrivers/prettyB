@@ -45,7 +45,7 @@ library("prettyB")
 All plotting functions work exactly as before, with the same inputs. The difference 
 is that the defaults have been changed. For example, compare
 
-```{r, plot-minimal,fig.width=12, fig.keep="none"}
+```{r, plot-minimal,fig.width=12}
 op = par(mfrow = c(1, 2))
 graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Sepal.Width)

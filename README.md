@@ -39,6 +39,8 @@ graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Sepal.Width)
 ```
 
+<img src="man/figures/README-plot-minimal-1.png" style="display: block; margin: auto;" />
+
 The second `plot()` function call is from the **prettyB** package.
 
 There are currently two themes: `expand` and `minimal`(default):
