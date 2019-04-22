@@ -9,10 +9,10 @@
 
 ## R CMD check results
 
-0 errors | 2 warnings | 1 note
+0 errors | 1 warnings | 1 note
 
  * Note: New submission
- * Warnings (both the same): S3 registeration of qqnorm.default. This package
+ * Warnings: S3 registeration of qqnorm.default. This package
  provides new versions of base graphics by over riding the defaults. qqnorm.default isn't 
  exported by stats, so I had to use :::
 
