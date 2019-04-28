@@ -5,6 +5,7 @@
 #' @param y y parameter passed to plot
 #' @param ... other parameters passed to plot
 #' @export
+#' @import graphics stats
 #' @rdname plot
 plot = function (x, y, ...) UseMethod("plot")
 

@@ -8,8 +8,7 @@ Maintainer: Colin Gillespie <csgillespie@gmail.com>
 Description: Modifications to standard base graphics. By masking function base function
   calls, standard plots are able to have themes.
 License: GPL-2 | GPL-3
-Depends: graphics
-Imports: grDevices, stats
+Imports: grDevices, stats, graphics
 Suggests: testthat, vdiffr, covr
 Encoding: UTF-8
 LazyData: true
