@@ -55,29 +55,35 @@ plot(iris$Sepal.Length, iris$Sepal.Width,
 
 <img src="man/figures/README-plot-expand-1.png" style="display: block; margin: auto;" />
 
-## Other plots
+<!-- ## Other plots -->
 
-The package also prettifies other functions, currently only qqplots.
+<!-- The package also prettifies other functions, currently only qqplots. -->
 
-  - qqplots
-    
-    ``` r
-    par(mfrow = c(1, 2))
-    x = rnorm(20)
-    stats:::qqnorm.default(x)
-    qqnorm(x)
-    ```
-    
-    <img src="man/figures/README-qqplots-1.png" style="display: block; margin: auto;" />
-    <!-- * Histograms --> <!--   ```{r, echo=-1} -->
-    <!--   par(mfrow=c(1, 2)) --> <!--   z = rt(100, 2) -->
-    <!--   graphics::hist.default(z, main="The t-distribution") -->
-    <!--   hist(z, main="The t-distribution") --> <!--   ``` -->
-    <!-- * barplots --> <!--   ```{r, echo=-1} -->
-    <!--   par(mfrow = c(1, 2), cex=0.9) -->
-    <!--   graphics::barplot.default(VADeaths, main = "Death Rates in Virginia") -->
-    <!--   barplot(VADeaths, main = "Death Rates in Virginia") -->
-    <!--   ``` -->
+<!--   * qqplots -->
+
+<!--     ```{r, qqplots,echo=-1} -->
+
+<!--     theme_set("minimal") -->
+
+<!--     par(mfrow = c(1, 2)) -->
+
+<!--     x = rnorm(20) -->
+
+<!--     stats:::qqnorm.default(x) -->
+
+<!--     qqnorm(x) -->
+
+<!--     ``` -->
+
+<!-- * Histograms --> <!--   ```{r, echo=-1} -->
+<!--   par(mfrow=c(1, 2)) --> <!--   z = rt(100, 2) -->
+<!--   graphics::hist.default(z, main="The t-distribution") -->
+<!--   hist(z, main="The t-distribution") --> <!--   ``` -->
+<!-- * barplots --> <!--   ```{r, echo=-1} -->
+<!--   par(mfrow = c(1, 2), cex=0.9) -->
+<!--   graphics::barplot.default(VADeaths, main = "Death Rates in Virginia") -->
+<!--   barplot(VADeaths, main = "Death Rates in Virginia") -->
+<!--   ``` -->
 
 ## Package Rationale
 

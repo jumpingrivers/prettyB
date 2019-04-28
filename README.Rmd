@@ -65,18 +65,18 @@ plot(iris$Sepal.Length, iris$Sepal.Width,
 par(op)
 ```
 
-## Other plots
+<!-- ## Other plots -->
 
-The package also prettifies other functions, currently only qqplots.
+<!-- The package also prettifies other functions, currently only qqplots. -->
 
-  * qqplots
-    ```{r, qqplots,echo=-1}
-    theme_set("minimal")
-    par(mfrow = c(1, 2))
-    x = rnorm(20)
-    stats:::qqnorm.default(x)
-    qqnorm(x)
-    ```
+<!--   * qqplots -->
+<!--     ```{r, qqplots,echo=-1} -->
+<!--     theme_set("minimal") -->
+<!--     par(mfrow = c(1, 2)) -->
+<!--     x = rnorm(20) -->
+<!--     stats:::qqnorm.default(x) -->
+<!--     qqnorm(x) -->
+<!--     ``` -->
   <!-- * Histograms -->
   <!--   ```{r, echo=-1} -->
   <!--   par(mfrow=c(1, 2)) -->
