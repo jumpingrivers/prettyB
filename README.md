@@ -46,6 +46,7 @@ The second `plot()` function call is from the **prettyB** package.
 There are currently two themes: `expand` and `minimal`(default):
 
 ``` r
+theme_set("expand")
 par(mfrow = c(1, 2))
 graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width, 
      main="Classic Iris Dataset", xlab="Length", ylab="Width")

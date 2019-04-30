@@ -19,3 +19,14 @@ plot(x, y, ...)
 \description{
 PrettyB's redefined plotting functions
 }
+\examples{
+# PrettyB overloads standard plotting functions
+plot(1:10)
+# All arguments still work as expect
+plot(iris$Sepal.Length, iris$Sepal.Width, bg = "red")
+# Use par as usual
+op = par(mfrow = c(1, 2))
+plot(rnorm(10), xlab = "X")
+plot(rnorm(10), main = "A title")
+par(op)
+}

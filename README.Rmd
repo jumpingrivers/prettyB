@@ -55,7 +55,7 @@ The second `plot()` function call is from the **prettyB** package.
 
 There are currently two themes: `expand` and `minimal`(default):
 
-```{r, plot-expand, fig.width=12, echo=c(-1, -5)}
+```{r, plot-expand, fig.width=12, echo=-5}
 theme_set("expand")
 par(mfrow = c(1, 2))
 graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width, 

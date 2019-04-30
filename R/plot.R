@@ -7,6 +7,16 @@
 #' @export
 #' @import graphics stats
 #' @rdname plot
+#' @examples
+#' # PrettyB overloads standard plotting functions
+#' plot(1:10)
+#' # All arguments still work as expect
+#' plot(iris$Sepal.Length, iris$Sepal.Width, bg = "red")
+#' # Use par as usual
+#' op = par(mfrow = c(1, 2))
+#' plot(rnorm(10), xlab = "X")
+#' plot(rnorm(10), main = "A title")
+#' par(op)
 plot = function (x, y, ...) UseMethod("plot")
 
 ## XXX: Make formula pretty - need to grab x & y
