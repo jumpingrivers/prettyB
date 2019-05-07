@@ -1,3 +1,5 @@
+# prettyB (development version)
+
 ## Version 0.1.1
   * Adding examples to ?plot
 
