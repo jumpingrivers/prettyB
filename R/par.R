@@ -1,8 +1,15 @@
 set_par = function(new_par) {
   new_par_names = names(new_par)
-  cur_par = par()
+  cur_par = par(no.readonly = TRUE)
+  if (is.null(cache$par)) {
+    cache$par = cur_par
+  }
   cached_par = cache$par
 
+  if (is.null(cache$palette)) {
+    cache$palette = palette()
+    palette(prettyB_pal())
+  }
   changes = vapply(new_par_names,
                    function(i) identical(cur_par[[i]], cached_par[[i]]),
                    logical(1))

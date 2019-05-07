@@ -16,15 +16,19 @@ prettyB_pal = function(alpha = 255) {
 .onLoad = function(libname, pkgname){
 
   # Cache current values
-  cache$palette = palette()
-  cache$par = par()
+  cache$palette = NULL
+  cache$par = NULL
 
   ## Set values
   theme_set(theme = "minimal")
-  palette(prettyB_pal())
 }
 
 .onUnload = function(libpath) {
-  par(cache$par)
-  palette(cache$palette)
+  if(!is.null(cache$par)) {
+    par(cache$par)
+  }
+
+  if(!is.null(cache$palette)) {
+    palette(cache$palette)
+  }
 }
