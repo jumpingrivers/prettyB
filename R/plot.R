@@ -31,43 +31,24 @@ plot.formula = graphics:::plot.formula
 plot.default = function(x, y = NULL, ...) {
   old_args = list(...)
 
-  if(is.null(old_args$xlab) && !is.null(y)) { # Match plot(x, y)
-    old_args$xlab = deparse(substitute(x))
-  } else if(is.null(old_args$xlab) && is.null(y)) {# Match plot(x) style
-    old_args$xlab = "Index"
+  if (is.null(old_args$xlab) && !is.null(y)) {
+    old_args$xlab = deparse(substitute(x)) ## Match plot(x, y)
+  } else if (is.null(old_args$xlab) && is.null(y)) {
+    old_args$xlab = "Index" # Match plot(x) style
   }
 
-  if(is.null(old_args$ylab)) {
-    if(!is.null(y)) { # Match plot(x, y)
-      old_args$ylab = deparse(substitute(y))
-    } else if (is.null(y)) { # Match plot(x) style
-      old_args$ylab = deparse(substitute(x))
+  if (is.null(old_args$ylab)) {
+    if (!is.null(y)) {
+      old_args$ylab = deparse(substitute(y)) # Match plot(x, y)
+    } else if (is.null(y)) {
+      old_args$ylab = deparse(substitute(x)) # Match plot(x) style
     }
   }
 
   theme = current$theme
-  if(theme == "expand") {
+  if (theme == "expand") {
     do.call(plot_expand, c(list(x, y), old_args))
-  } else if(theme == "minimal") {
+  } else if (theme == "minimal") {
     do.call(plot_minimal, c(list(x, y), old_args))
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,5 @@
+linters: with_defaults(
+    assignment_linter = NULL, # 20
+    commented_code_linter = NULL,
+    NULL
+    )

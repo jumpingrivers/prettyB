@@ -28,7 +28,7 @@ set_par_expand = function() {
 set_par_minimal = function() {
   par_min = list(mar = c(3, 3, 2, 1), mgp = c(2, 0.4, 0), tck = -.01,
                  cex.axis = 0.9, las = 1,
-                 xaxs='i', yaxs='i',
-                 col.lab="grey50")
+                 xaxs = "i", yaxs = "i",
+                 col.lab = "grey50")
   set_par(par_min)
 }

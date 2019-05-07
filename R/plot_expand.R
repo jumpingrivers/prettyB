@@ -11,5 +11,6 @@ plot_expand = function(x, y = NULL, ...) {
   if (is.null(y))
     do.call(graphics::plot.default, c(list(substitute(x)), new_args))
   else
-    do.call(graphics::plot.default, c(list(substitute(x), substitute(y)), new_args))
+    do.call(graphics::plot.default,
+            c(list(substitute(x), substitute(y)), new_args))
 }
