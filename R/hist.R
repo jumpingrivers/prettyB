@@ -1,11 +1,28 @@
+#' @title PrettyB hist.default function
+#'
+#' @description  This function overrides the default arguments. See
+#' \code{?graphics::hist.default}
+#' @param x,breaks,freq,probability See \code{?graphics::hist.default}
+#' @param include.lowest,right,density See \code{?graphics::hist.default}
+#' @param angle,col,border,main See \code{?graphics::hist.default}
+#' @param xlim,ylim,xlab,ylab,axes,plot See \code{?graphics::hist.default}
+#' @param labels,nclass,warn.unused See \code{?graphics::hist.default}
+#' @param ... See \code{?graphics::hist.default}
 #' @export
+#' @examples
+#' x = rlnorm(100)
+#' hist(x)
+#' library("prettyB")
+#' hist(x)
 hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
-                        include.lowest = TRUE, right = TRUE, density = NULL, angle = 45,
-                        col = NULL, border = NULL, main = paste("Histogram of", xname),
-                        xlim = range(breaks), ylim = NULL, xlab = xname, ylab, axes = TRUE,
-                        plot = TRUE, labels = FALSE, nclass = NULL, warn.unused = TRUE,
+                        include.lowest = TRUE, right = TRUE, density = NULL,
+                        angle = 45, col = NULL, border = NULL,
+                        main = paste("Histogram of", xname),
+                        xlim = range(breaks), ylim = NULL,
+                        xlab = xname, ylab, axes = TRUE,
+                        plot = TRUE, labels = FALSE, nclass = NULL,
+                        warn.unused = TRUE,
                         ...) {
-
   op = set_par_minimal()
   on.exit(par(op))
 
@@ -21,10 +38,9 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   args$density = density
   args$angle = angle
   args$main = main
-  args$xlim = xlim
+  #args$xlim = xlim # Get xlim from hist_out below
 
   args$xlab = xlab
-
   args$axes = axes
   args$plot = plot
   args$labels = labels
@@ -35,21 +51,26 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   args$breaks = if (missing(breaks)) "Freedman-Diaconis" else breaks
   args$col = if (missing(col)) 1 else col
   args$border = if (missing(border)) "white" else border
-  args$plot = FALSE
   args$ylim = ylim
+  if (isTRUE(args$add)) {
+    return(do.call(graphics::hist.default, args))
+  }
+
+  args$plot = FALSE
+
+
   hist_out = suppressWarnings(do.call(graphics::hist.default, args))
 
   if (missing(ylab))
-    args$ylab <- if (!hist_out$equidist) "Density" else "Frequency"
+    args$ylab = if (!hist_out$equidist) "Density" else "Frequency"
   else args$ylab = ylab
-  message(args$ylab)
 
   args$plot = plot
 
   if (is.null(args$freq) || isTRUE(args$freq)) {
     ticks_y = pretty(c(hist_out$counts, args$ylim, 0))
   } else {
-    ticks_y = pretty(c(hist_out$counts/sum(hist_out$counts, args$ylim, 0)))
+    ticks_y = pretty(c(hist_out$counts / sum(hist_out$counts, args$ylim, 0)))
   }
 
   if (is.null(args$ylim)) {
@@ -62,27 +83,21 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   }
   args$axes = FALSE
 
-
   ## Don't display title - use title()
   args$main = " "
-  plot.default(0, type = "n",
+  graphics::plot.default(0, type = "n",
                xlim = args$xlim, ylim = args$ylim,
                bty = "n", axes = FALSE,
                ylab = args$ylab, xlab = args$xlab,
-               panel.first = abline(h = ticks_y, col = "grey90", lty = 2))
+               panel.first = grid_lines(ticks_y))
 
   args$add = TRUE
   hist_out = do.call(graphics::hist.default, args)
 
   abline(0, 0, col = "white")
-
-  axis(1,ticks_x, ticks_x,
-       tick = TRUE,
-       lwd = 0,
-       lwd.ticks = 1, col.axis = "grey30", col.ticks = "grey20")
-  axis(2, ticks_y, ticks_y, tick = FALSE, las = 1, col.axis = "grey30", col.ticks = "grey20")
-  title(main, adj = 1, cex.main = 1.1, font.main = 2,
-        col.main = "grey20")
+  add_x_axis(ticks_x)
+  add_y_axis(ticks_y)
+  add_title(main)
 
   invisible(hist_out)
 }
