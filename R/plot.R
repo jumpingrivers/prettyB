@@ -1,54 +1,126 @@
-#' PrettyB's plotting function
+is_x = function(chr) length(grep("x", chr)) > 0
+is_y = function(chr) length(grep("y", chr)) > 0
+# Extend axis for par(xaxs="i)
+extend_axis = function(lim, eps = 0.02) lim + c(-1, 1) * diff(lim) * eps
+
+
+#' @title PrettyB plot.default function
 #'
-#' PrettyB's redefined plotting functions
-#' @param x x parameter passed to plot
-#' @param y y parameter passed to plot
-#' @param ... other parameters passed to plot
-#' @export
-#' @import graphics stats
-#' @rdname plot
-#' @examples
-#' # PrettyB overloads standard plotting functions
-#' plot(1:10)
-#' # All arguments still work as expect
-#' plot(iris$Sepal.Length, iris$Sepal.Width, bg = "red")
-#' # Use par as usual
-#' op = par(mfrow = c(1, 2))
-#' plot(rnorm(10), xlab = "X")
-#' plot(rnorm(10), main = "A title")
-#' par(op)
-plot = function (x, y, ...) UseMethod("plot")
-
-## XXX: Make formula pretty - need to grab x & y
-#' @method plot formula
-#' @export
-plot.formula = graphics:::plot.formula
-
+#' @description  This function overrides the default arguments. See
+#' \code{?graphics::plot.default}
+#' @param x,y,type,log See \code{?graphics::plot.default}
+#' @param xlim,ylim See \code{?graphics::plot.default}
+#' @param main,sub,xlab,ylab See \code{?graphics::plot.default}
+#' @param ann,axes See \code{?graphics::plot.default}
+#' @param frame.plot,panel.first,panel.last See \code{?graphics::plot.default}
+#' @param asp,xgap.axis,ygap.axis See \code{?graphics::plot.default}
+#' @param ... See \code{?graphics::plot.default}
 #' @importFrom graphics plot.default abline axTicks axis grid par title
+#' @importFrom grDevices xy.coords
 #' @method plot default
 #' @rdname plot
 #' @export
-plot.default = function(x, y = NULL, ...) {
-  old_args = list(...)
+plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
+                        log = "", main = NULL, sub = NULL,
+                        xlab = NULL, ylab = NULL,
+                        ann = par("ann"), axes = TRUE,
+                        frame.plot = axes, panel.first = NULL,
+                        panel.last = NULL, asp = NA,
+                        xgap.axis = NA, ygap.axis = NA,
+                        ...) {
+  xlabel = if (!missing(x)) deparse(substitute(x))
+  ylabel = if (!missing(y)) deparse(substitute(y))
+  xy = xy.coords(x, y, xlabel, ylabel, log)
+  xlab = if (is.null(xlab)) xy$xlab else xlab
+  ylab = if (is.null(ylab)) xy$ylab else ylab
 
-  if (is.null(old_args$xlab) && !is.null(y)) {
-    old_args$xlab = deparse(substitute(x)) ## Match plot(x, y)
-  } else if (is.null(old_args$xlab) && is.null(y)) {
-    old_args$xlab = "Index" # Match plot(x) style
+  #theme = current$theme
+  ## Expand plot
+  op = set_par_minimal()
+  on.exit(par(op))
+
+  ## Do we have a y?
+  if (is.null(y)) {
+    x_tmp = 1:length(x)
+    y_tmp = x
+  } else {
+    x_tmp = x
+    y_tmp = y
   }
 
-  if (is.null(old_args$ylab)) {
-    if (!is.null(y)) {
-      old_args$ylab = deparse(substitute(y)) # Match plot(x, y)
-    } else if (is.null(y)) {
-      old_args$ylab = deparse(substitute(x)) # Match plot(x) style
-    }
+  ## Now check for log scales
+  if (is.null(xlim) && is_x(log)) {
+    xlim = extend_axis(range(x_tmp))
   }
 
-  theme = current$theme
-  if (theme == "expand") {
-    do.call(plot_expand, c(list(x, y), old_args))
-  } else if (theme == "minimal") {
-    do.call(plot_minimal, c(list(x, y), old_args))
+  if (is.null(xlim)) {
+    ticks_x = pretty(x_tmp)
+    xlim = extend_axis(range(ticks_x))
+  } else {
+    ticks_x = pretty(c(xlim, x_tmp))
+    xlim = range(ticks_x)
   }
+
+  ## Now check for log scales
+  if (is.null(ylim) && is_y(log)) {
+    ylim = extend_axis(range(y_tmp))
+  }
+
+  if (is.null(ylim)) {
+    ticks_y = pretty(y_tmp)
+    ylim = extend_axis(range(ticks_y))
+  } else {
+    ticks_y = pretty(c(ylim, y_tmp))
+    ylim = range(ticks_y)
+  }
+
+  # Unchanged Arguments
+  args = list(...)
+  args$x = x
+  args$y = y
+  args$type = type
+  args$log = log
+  args$sub = sub
+  args$xlab = xlab
+  args$ylab = ylab
+  args$ann = ann
+  args$frame.plot = FALSE
+  args$panel.last = panel.last
+  args$asp = asp
+  args$xgap.axis = xgap.axis
+  args$ygap.axis = ygap.axis
+
+  # Changed Args
+  args$xlim = xlim
+  args$ylim = ylim
+  args$main = NULL
+  args$axes = FALSE
+  args$panel.first = substitute(abline(h = ticks_y,
+                                           col = "grey90",
+                                           lty = 2))
+
+  if (is.null(args$pch)) args$pch = 21
+  if (is.null(args$bg)) args$bg = 1
+
+  # Call to default plot
+  do.call(graphics::plot.default, args)
+
+  ## Now add in tick marks and labels
+  if (is_x(log)) {
+    ticks_x = axTicks(1)
+  }
+  if (is_y(log)) {
+    ticks_y = axTicks(2)
+  }
+
+  # Add axis
+  axis(2, ticks_y, ticks_y, tick = FALSE, las = 1)
+  axis(1, ticks_x, ticks_x, tick = TRUE, lwd = 0,
+       lwd.ticks = 1)
+
+  if (!is.null(main)) {
+    title(main, adj = 1, cex.main = 1.1, font.main = 2,
+          col.main = par("col.main"))
+  }
+  invisible(NULL)
 }

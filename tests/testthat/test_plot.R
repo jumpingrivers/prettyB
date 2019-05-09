@@ -1,4 +1,4 @@
-test_that("Testing plotting", {
+test_that("Testing plot", {
   context("Plot only x")
   vdiffr::expect_doppelganger("Plot x", plot(1:10))
   vdiffr::expect_doppelganger("Plot x-xlab", plot(1:10, xlab = "X"))

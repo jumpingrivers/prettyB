@@ -20,7 +20,7 @@ prettyB_pal = function(alpha = 255) {
   cache$par = NULL
 
   ## Set values
-  theme_set(theme = "minimal")
+  #theme_set(theme = "minimal")
 }
 
 .onUnload = function(libpath) {
