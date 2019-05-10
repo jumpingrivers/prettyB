@@ -11,10 +11,11 @@
 #' @param inside,plot,axis.lty See \code{?graphics::barplot.default}
 #' @param offset,add,args.legend See \code{?graphics::barplot.default}
 #' @param ... See \code{?graphics::barplot.default}
-#' @importFrom graphics barplot.default
-#' @importFrom graphics barplot
+#' @importFrom graphics barplot.default barplot
 #' @method barplot default
 #' @export
+#' @examples
+#' barplot(VADeaths)
 barplot.default = function(height, width = 1, space = NULL, names.arg = NULL,
                            legend.text = NULL, beside = FALSE, horiz = FALSE,
                            density = NULL, angle = 45, col = NULL,
@@ -107,7 +108,6 @@ barplot.default = function(height, width = 1, space = NULL, names.arg = NULL,
     ticks_y = ticks
     args$xlim = if (missing(xlim)) range(0, rect_up + rect_low[1]) else xlim
     args$ylim = range(ticks_y)
-    message(args$ylim)
     graphics::plot.default(0, type = "n",
                            xlim = args$xlim,
                            ylim = args$ylim,

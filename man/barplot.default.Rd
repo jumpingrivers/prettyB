@@ -36,3 +36,6 @@
 This function overrides the default arguments. See
 \code{?graphics::barplot.default}
 }
+\examples{
+barplot(VADeaths)
+}
