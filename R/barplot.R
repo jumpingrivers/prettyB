@@ -63,7 +63,7 @@ barplot.default = function(height, width = 1, space = NULL, names.arg = NULL,
   args$sub = NULL # Move to bottom
   if (!is.null(col)) {
     args$col = col
-  } else if(is.matrix(height)) {
+  } else if (is.matrix(height)) {
     args$col = 1:NROW(height)
   } else {
     args$col = 1
@@ -79,11 +79,11 @@ barplot.default = function(height, width = 1, space = NULL, names.arg = NULL,
   # Combinations of horizontal, beside,
   # specified xlim, ylim
   # Used on the "frequency/count" axis
-  if(!is.null(xlim) && isTRUE(args$horiz)) {
+  if (!is.null(xlim) && isTRUE(args$horiz)) {
     ticks = pretty(xlim)
   } else if (!is.null(ylim) && !isTRUE(args$horiz)) {
     ticks = pretty(ylim)
-  } else if(is.matrix(height) && isFALSE(beside)) {
+  } else if (is.matrix(height) && isFALSE(beside)) {
     ticks = pretty(c(0, colSums(height)))
   } else {
     ticks = pretty(c(0, height))
@@ -92,10 +92,10 @@ barplot.default = function(height, width = 1, space = NULL, names.arg = NULL,
   # Find end of rectangles for unequal widths
   rect_up = res + width / 2
   rect_low = res - width / 2
-  if(isTRUE(args$horiz)) {
+  if (isTRUE(args$horiz)) {
     ticks_x = ticks
     args$xlim = range(ticks_x)
-    args$ylim = if(missing(ylim)) range(0, rect_up + rect_low[1]) else ylim
+    args$ylim = if (missing(ylim)) range(0, rect_up + rect_low[1]) else ylim
     graphics::plot.default(0, type = "n",
                            ylim = args$ylim,
                            xlim = args$xlim,
@@ -105,7 +105,7 @@ barplot.default = function(height, width = 1, space = NULL, names.arg = NULL,
 
   } else {
     ticks_y = ticks
-    args$xlim = if(missing(xlim)) range(0, rect_up + rect_low[1]) else xlim
+    args$xlim = if (missing(xlim)) range(0, rect_up + rect_low[1]) else xlim
     args$ylim = range(ticks_y)
     message(args$ylim)
     graphics::plot.default(0, type = "n",
@@ -122,7 +122,7 @@ barplot.default = function(height, width = 1, space = NULL, names.arg = NULL,
     lab = colnames(height)
   } else {
     lab_loc = res
-    if(is.matrix(height) ){
+    if (is.matrix(height) ){
       lab = colnames(height)
     } else {
       lab_loc = res
