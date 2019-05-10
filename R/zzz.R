@@ -19,6 +19,8 @@ prettyB_pal = function(alpha = 255) {
   cache$palette = NULL
   cache$par = NULL
 
+  cache$first = TRUE
+
   ## Set values
   #theme_set(theme = "minimal")
 }

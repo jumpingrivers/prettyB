@@ -13,7 +13,7 @@ extend_axis = function(lim, eps = 0.02) lim + c(-1, 1) * diff(lim) * eps
 #' @param main,sub,xlab,ylab See \code{?graphics::plot.default}
 #' @param ann,axes See \code{?graphics::plot.default}
 #' @param frame.plot,panel.first,panel.last See \code{?graphics::plot.default}
-#' @param asp,xgap.axis,ygap.axis See \code{?graphics::plot.default}
+#' @param asp See \code{?graphics::plot.default}
 #' @param ... See \code{?graphics::plot.default}
 #' @importFrom graphics plot.default abline axTicks axis grid par title
 #' @importFrom grDevices xy.coords
@@ -26,8 +26,8 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
                         ann = par("ann"), axes = TRUE,
                         frame.plot = axes, panel.first = NULL,
                         panel.last = NULL, asp = NA,
-                        xgap.axis = NA, ygap.axis = NA,
                         ...) {
+  setup_prettyB()
   xlabel = if (!missing(x)) deparse(substitute(x))
   ylabel = if (!missing(y)) deparse(substitute(y))
   xy = xy.coords(x, y, xlabel, ylabel, log)
@@ -36,8 +36,8 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
 
   #theme = current$theme
   ## Expand plot
-  op = set_par_minimal()
-  on.exit(par(op))
+  # op = set_par_minimal()
+  # on.exit(par(op))
 
   ## Do we have a y?
   if (is.null(y)) {
@@ -87,17 +87,13 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
   args$frame.plot = FALSE
   args$panel.last = panel.last
   args$asp = asp
-  args$xgap.axis = xgap.axis
-  args$ygap.axis = ygap.axis
 
   # Changed Args
   args$xlim = xlim
   args$ylim = ylim
   args$main = NULL
   args$axes = FALSE
-  args$panel.first = substitute(abline(h = ticks_y,
-                                           col = "grey90",
-                                           lty = 2))
+  args$panel.first = substitute(grid_lines_h(ticks_y))
 
   if (is.null(args$pch)) args$pch = 21
   if (is.null(args$bg)) args$bg = 1
@@ -113,14 +109,10 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
     ticks_y = axTicks(2)
   }
 
-  # Add axis
-  axis(2, ticks_y, ticks_y, tick = FALSE, las = 1)
-  axis(1, ticks_x, ticks_x, tick = TRUE, lwd = 0,
-       lwd.ticks = 1)
+  # Add axis & title
+  add_x_axis(ticks_x)
+  add_y_axis(ticks_y, tick = FALSE)
+  add_title(main)
 
-  if (!is.null(main)) {
-    title(main, adj = 1, cex.main = 1.1, font.main = 2,
-          col.main = par("col.main"))
-  }
   invisible(NULL)
 }

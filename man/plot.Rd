@@ -7,8 +7,7 @@
 \method{plot}{default}(x, y = NULL, type = "p", xlim = NULL,
   ylim = NULL, log = "", main = NULL, sub = NULL, xlab = NULL,
   ylab = NULL, ann = par("ann"), axes = TRUE, frame.plot = axes,
-  panel.first = NULL, panel.last = NULL, asp = NA, xgap.axis = NA,
-  ygap.axis = NA, ...)
+  panel.first = NULL, panel.last = NULL, asp = NA, ...)
 }
 \arguments{
 \item{x, y, type, log}{See \code{?graphics::plot.default}}
@@ -21,7 +20,7 @@
 
 \item{frame.plot, panel.first, panel.last}{See \code{?graphics::plot.default}}
 
-\item{asp, xgap.axis, ygap.axis}{See \code{?graphics::plot.default}}
+\item{asp}{See \code{?graphics::plot.default}}
 
 \item{...}{See \code{?graphics::plot.default}}
 }
