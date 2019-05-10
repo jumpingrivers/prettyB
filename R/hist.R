@@ -21,9 +21,7 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
                         plot = TRUE, labels = FALSE, nclass = NULL,
                         warn.unused = TRUE,
                         ...) {
-  # op = set_par_minimal()
-  # on.exit(par(op))
-  setup_prettyB
+  setup_prettyB()
   xname = paste(deparse(substitute(x), 500), collapse = "\n")
   # Unchanged Arguments
   args = list(...)
@@ -85,6 +83,8 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
                bty = "n", axes = FALSE,
                ylab = args$ylab, xlab = args$xlab,
                panel.first = grid_lines_h(ticks_y))
+
+
 
   args$add = TRUE
   hist_out = do.call(graphics::hist.default, args)

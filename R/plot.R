@@ -80,7 +80,6 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
   args$y = y
   args$type = type
   args$log = log
-  args$sub = sub
   args$xlab = xlab
   args$ylab = ylab
   args$ann = ann
@@ -92,6 +91,7 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
   args$xlim = xlim
   args$ylim = ylim
   args$main = NULL
+  args$sub = NULL
   args$axes = FALSE
   args$panel.first = substitute(grid_lines_h(ticks_y))
 
@@ -113,6 +113,6 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
   add_x_axis(ticks_x)
   add_y_axis(ticks_y, tick = FALSE)
   add_title(main)
-
+  add_sub(sub)
   invisible(NULL)
 }
