@@ -12,8 +12,6 @@
 #' @examples
 #' x = rlnorm(100)
 #' hist(x)
-#' library("prettyB")
-#' hist(x)
 hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
                         include.lowest = TRUE, right = TRUE, density = NULL,
                         angle = 45, col = NULL, border = NULL,
@@ -23,9 +21,9 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
                         plot = TRUE, labels = FALSE, nclass = NULL,
                         warn.unused = TRUE,
                         ...) {
-  op = set_par_minimal()
-  on.exit(par(op))
-
+  # op = set_par_minimal()
+  # on.exit(par(op))
+  setup_prettyB
   xname = paste(deparse(substitute(x), 500), collapse = "\n")
   # Unchanged Arguments
   args = list(...)
@@ -55,10 +53,7 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   if (isTRUE(args$add)) {
     return(do.call(graphics::hist.default, args))
   }
-
   args$plot = FALSE
-
-
   hist_out = suppressWarnings(do.call(graphics::hist.default, args))
 
   if (missing(ylab))
@@ -89,14 +84,14 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
                xlim = args$xlim, ylim = args$ylim,
                bty = "n", axes = FALSE,
                ylab = args$ylab, xlab = args$xlab,
-               panel.first = grid_lines(ticks_y))
+               panel.first = grid_lines_h(ticks_y))
 
   args$add = TRUE
   hist_out = do.call(graphics::hist.default, args)
 
   abline(0, 0, col = "white")
   add_x_axis(ticks_x)
-  add_y_axis(ticks_y)
+  add_y_axis(ticks_y, tick = FALSE)
   add_title(main)
 
   invisible(hist_out)

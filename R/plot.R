@@ -27,6 +27,7 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
                         frame.plot = axes, panel.first = NULL,
                         panel.last = NULL, asp = NA,
                         ...) {
+  setup_prettyB()
   xlabel = if (!missing(x)) deparse(substitute(x))
   ylabel = if (!missing(y)) deparse(substitute(y))
   xy = xy.coords(x, y, xlabel, ylabel, log)
@@ -35,8 +36,8 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
 
   #theme = current$theme
   ## Expand plot
-  op = set_par_minimal()
-  on.exit(par(op))
+  # op = set_par_minimal()
+  # on.exit(par(op))
 
   ## Do we have a y?
   if (is.null(y)) {
@@ -92,7 +93,7 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
   args$ylim = ylim
   args$main = NULL
   args$axes = FALSE
-  args$panel.first = substitute(grid_lines(ticks_y))
+  args$panel.first = substitute(grid_lines_h(ticks_y))
 
   if (is.null(args$pch)) args$pch = 21
   if (is.null(args$bg)) args$bg = 1
@@ -110,7 +111,7 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
 
   # Add axis & title
   add_x_axis(ticks_x)
-  add_y_axis(ticks_y)
+  add_y_axis(ticks_y, tick = FALSE)
   add_title(main)
 
   invisible(NULL)

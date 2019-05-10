@@ -31,6 +31,4 @@ This function overrides the default arguments. See
 \examples{
 x = rlnorm(100)
 hist(x)
-library("prettyB")
-hist(x)
 }
