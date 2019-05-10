@@ -28,8 +28,12 @@ standard plotting functions, we can automatically make base graphics a bit more 
 
 ## Installation
 
-The package is still being developed and the API is subject to change. To install the package from
-github, use **devtools**
+The package is still being developed and the graphs are subject to change.
+The package is on CRAN and can be installed in the usual way
+```{r eval = FALSE}
+install.packages("prettyB")
+```
+To install the dev version, try
 
 ```{r, eval=FALSE}
 devtools::install_github("jumpingrivers/prettyB")
@@ -50,46 +54,40 @@ op = par(mfrow = c(1, 2))
 graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Sepal.Width)
 ```
-
-The second `plot()` function call is from the **prettyB** package.  
-
-There are currently two themes: `expand` and `minimal`(default):
-
-```{r, plot-expand, fig.width=12, echo=-5}
-theme_set("expand")
-par(mfrow = c(1, 2))
-graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width, 
-     main="Classic Iris Dataset", xlab="Length", ylab="Width")
+When you first call a __prettyB__, it changes the underlying `par()` and
+`palette()`. You can reset this via
+```{r}
+prettyB::reset_prettyB()
+```
+The core idea of __prettyB__ is that no new arguments are introducted to the
+plot functions. This means, that no changes to existing code
+are required
+```{r, plot-minimal-full,fig.width=6, echo = -1}
+op = par(mfrow = c(1, 1))
 plot(iris$Sepal.Length, iris$Sepal.Width, 
-     main="Classic Iris Dataset", xlab="Length", ylab="Width")
-par(op)
+     xlab = "Length", ylab = "Width",
+     main = "The Iris data set", 
+     sub = "I hate this data too")
 ```
 
-<!-- ## Other plots -->
+## Other plots
 
-<!-- The package also prettifies other functions, currently only qqplots. -->
+The package also prettifies other functions
 
-<!--   * qqplots -->
-<!--     ```{r, qqplots,echo=-1} -->
-<!--     theme_set("minimal") -->
-<!--     par(mfrow = c(1, 2)) -->
-<!--     x = rnorm(20) -->
-<!--     stats:::qqnorm.default(x) -->
-<!--     qqnorm(x) -->
-<!--     ``` -->
-  <!-- * Histograms -->
-  <!--   ```{r, echo=-1} -->
-  <!--   par(mfrow=c(1, 2)) -->
-  <!--   z = rt(100, 2) -->
-  <!--   graphics::hist.default(z, main="The t-distribution") -->
-  <!--   hist(z, main="The t-distribution") -->
-  <!--   ``` -->
-  <!-- * barplots -->
-  <!--   ```{r, echo=-1} -->
-  <!--   par(mfrow = c(1, 2), cex=0.9) -->
-  <!--   graphics::barplot.default(VADeaths, main = "Death Rates in Virginia") -->
-  <!--   barplot(VADeaths, main = "Death Rates in Virginia") -->
-  <!--   ``` -->
+  * Histograms
+    ```{r, echo=c(-1, -2)}
+    prettyB::reset_prettyB()
+    par(mfrow = c(1, 2))
+    z = rt(100, 4)
+    graphics::hist.default(z, main = "The t-distribution")
+    hist(z, main = "The t-distribution")
+    ```
+  * barplots
+    ```{r, echo=-1}
+    par(mfrow = c(1, 2), cex = 0.9)
+    graphics::barplot.default(VADeaths, main = "Death Rates in Virginia")
+    barplot(VADeaths, main = "Death Rates in Virginia")
+    ```
 
 ## Package Rationale
 
@@ -98,8 +96,13 @@ This package is __not__ a replacement for __ggplot2__ or other R related plottin
  * provide package authors a low dependency method of making their plots look pretty
  * provide academics with a way of generating nice plots, but not worry about future changes in R
  * provide a simple way for improving the look and feel of plots in teaching
- 
+
 Since the generated plots by __prettyB__ use standard base graphics, with no new arguments, this makes plots future proof. As a fall-back, just don't load the package. 
+
+I picked up the general style a few years ago, but the book
+[Fundamentals of Data Visualization](https://amzn.to/2Hct447) has made it a bit 
+more consist. The author also provided a free 
+[online](https://serialmentor.com/dataviz/) version.
 
 ## Other information
 
@@ -108,8 +111,7 @@ Since the generated plots by __prettyB__ use standard base graphics, with no new
 
 ### TODO
 
-  * Box plots, barplots, histograms
-  * Think a bit more about palettes
+  * Box plots
   * Vignettes: What defaults have been changed.
 
 ---

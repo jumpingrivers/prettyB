@@ -15,8 +15,14 @@ automatically make base graphics a bit more pretty.
 
 ## Installation
 
-The package is still being developed and the API is subject to change.
-To install the package from github, use **devtools**
+The package is still being developed and the graphs are subject to
+change. The package is on CRAN and can be installed in the usual way
+
+``` r
+install.packages("prettyB")
+```
+
+To install the dev version, try
 
 ``` r
 devtools::install_github("jumpingrivers/prettyB")
@@ -40,51 +46,48 @@ plot(iris$Sepal.Length, iris$Sepal.Width)
 ```
 
 <img src="man/figures/README-plot-minimal-1.png" style="display: block; margin: auto;" />
-
-The second `plot()` function call is from the **prettyB** package.
-
-There are currently two themes: `expand` and `minimal`(default):
+When you first call a **prettyB**, it changes the underlying `par()` and
+`palette()`. You can reset this via
 
 ``` r
-theme_set("expand")
-par(mfrow = c(1, 2))
-graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width, 
-     main="Classic Iris Dataset", xlab="Length", ylab="Width")
-plot(iris$Sepal.Length, iris$Sepal.Width, 
-     main="Classic Iris Dataset", xlab="Length", ylab="Width")
+prettyB::reset_prettyB()
 ```
 
-<img src="man/figures/README-plot-expand-1.png" style="display: block; margin: auto;" />
+The core idea of **prettyB** is that no new arguments are introducted to
+the plot functions. This means, that no changes to existing code are
+required
 
-<!-- ## Other plots -->
+``` r
+plot(iris$Sepal.Length, iris$Sepal.Width, 
+     xlab = "Length", ylab = "Width",
+     main = "The Iris data set", 
+     sub = "I hate this data too")
+```
 
-<!-- The package also prettifies other functions, currently only qqplots. -->
+<img src="man/figures/README-plot-minimal-full-1.png" style="display: block; margin: auto;" />
 
-<!--   * qqplots -->
+## Other plots
 
-<!--     ```{r, qqplots,echo=-1} -->
+The package also prettifies other functions
 
-<!--     theme_set("minimal") -->
+  - Histograms
+    
+    ``` r
+    z = rt(100, 4)
+    graphics::hist.default(z, main = "The t-distribution")
+    hist(z, main = "The t-distribution")
+    ```
+    
+    <img src="man/figures/README-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
-<!--     par(mfrow = c(1, 2)) -->
-
-<!--     x = rnorm(20) -->
-
-<!--     stats:::qqnorm.default(x) -->
-
-<!--     qqnorm(x) -->
-
-<!--     ``` -->
-
-<!-- * Histograms --> <!--   ```{r, echo=-1} -->
-<!--   par(mfrow=c(1, 2)) --> <!--   z = rt(100, 2) -->
-<!--   graphics::hist.default(z, main="The t-distribution") -->
-<!--   hist(z, main="The t-distribution") --> <!--   ``` -->
-<!-- * barplots --> <!--   ```{r, echo=-1} -->
-<!--   par(mfrow = c(1, 2), cex=0.9) -->
-<!--   graphics::barplot.default(VADeaths, main = "Death Rates in Virginia") -->
-<!--   barplot(VADeaths, main = "Death Rates in Virginia") -->
-<!--   ``` -->
+  - barplots
+    
+    ``` r
+    graphics::barplot.default(VADeaths, main = "Death Rates in Virginia")
+    barplot(VADeaths, main = "Death Rates in Virginia")
+    ```
+    
+    <img src="man/figures/README-unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 ## Package Rationale
 
@@ -102,6 +105,11 @@ Since the generated plots by **prettyB** use standard base graphics,
 with no new arguments, this makes plots future proof. As a fall-back,
 just don’t load the package.
 
+I picked up the general style a few years ago, but the book
+[Fundamentals of Data Visualization](https://amzn.to/2Hct447) has made
+it a bit more consist. The author also provided a free
+[online](https://serialmentor.com/dataviz/) version.
+
 ## Other information
 
   - If you have any suggestions or find bugs, please use the github
@@ -110,8 +118,7 @@ just don’t load the package.
 
 ### TODO
 
-  - Box plots, barplots, histograms
-  - Think a bit more about palettes
+  - Box plots
   - Vignettes: What defaults have been changed.
 
 -----
