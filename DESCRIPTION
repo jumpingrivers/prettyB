@@ -7,9 +7,12 @@ Authors@R: person(given="Colin", family="Gillespie",
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
 Description: Modifications to standard base graphics, by masking function base function
   calls.
+URL: https://github.com/jumpingrivers/prettyB/
+BugReports: https://github.com/jumpingrivers/prettyB//issues
 License: GPL-2 | GPL-3
 Imports: grDevices, stats, graphics
-Suggests: testthat, vdiffr, covr, lintr
+Suggests: testthat, vdiffr, covr, lintr, knitr
 Encoding: UTF-8
 LazyData: true
+VignetteBuilder: knitr
 RoxygenNote: 6.1.1

@@ -1,0 +1,158 @@
+---
+title: "Introduction to prettyB"
+author: "Colin Gillespie"
+vignette: >
+  %\VignetteIndexEntry{Histogram examples}
+  \usepackage[utf8]{inputenc}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+```{r include = FALSE}
+knitr::opts_chunk$set(results = "hide", echo = TRUE )
+set.seed(1)
+library(prettyB)
+```
+
+## Introduction
+
+The __prettyB__ changes the default values of some standard plotting functions.
+It is __not__ a replacement for __ggplot2__ (or other plotting packages),
+instead, it's meant to just make the base graphics a little bit nicer.
+Due to the underyling structure of base graphics & S3 objects, some things aren't possible. 
+In particular, changing how non-exported plot-methods are displayed.
+
+The general idea is by simply loading the __prettyB__ package, plots
+just become a bit nicer!
+
+## Histogram examples
+
+The important point to note with this histogram method is the `breaks` 
+argument now has a new default. Instead of `breaks = "Sturges"`, the
+default is `breaks = "fd"`. In general, this is a better default (but
+not always)
+```{r, echo = c(-1, -2)}
+op = par(mfrow = c(1, 2))
+reset_prettyB()
+x = rlnorm(100)
+graphics::hist.default(x)
+hist(x)
+```
+
+Standard arguments work as well
+```{r, echo = c(-1, -2)}
+op = par(mfrow = c(1, 2))
+reset_prettyB()
+y = rnorm(100)
+graphics::hist.default(y, main = "Base Graphics", sub = "Sub heading", 
+                       xlab = "x-axis", ylab = "y-axis")
+hist(y, main = "prettyB",  sub = "Sub heading", xlab = "x-axis", ylab = "y-axis")
+```
+
+Colours and frequncies also work as is expected
+```{r, echo = c(-1, -2)}
+op = par(mfrow = c(1, 2))
+reset_prettyB()
+z = rt(100, 4)
+graphics::hist.default(z, col = "grey60", freq = FALSE)
+hist(z, col = "grey60", freq = FALSE)
+```
+
+## Barplot examples
+
+The `barplot()` has an amazing number of different configurations.
+
+```{r, out.width="100%"}
+op = par(mfrow = c(1, 2))
+reset_prettyB()
+require(grDevices) # for colours
+tN <- table(Ni <- stats::rpois(100, lambda = 3))
+graphics::barplot.default(tN)
+barplot(tN)
+```
+The following examples are taken directly from the example page of `?barplot`.
+This means that sometimes the colours clash.
+```{r}
+reset_prettyB()
+r = graphics::barplot.default(tN, col = rainbow(20))
+#- type = "h" plotting *is* 'bar'plot
+lines(r, tN, type = "h", col = "red", lwd = 2)
+r = barplot(tN, col = rainbow(20))
+#- type = "h" plotting *is* 'bar'plot
+lines(r, tN, type = "h", col = "red", lwd = 2)
+```
+Spacing and titles still work
+```{r}
+reset_prettyB()
+graphics::barplot.default(tN, space = 1.5, axisnames = FALSE,
+        sub = "barplot(..., space= 1.5, axisnames = FALSE)")
+barplot(tN, space = 1.5, axisnames = FALSE,
+        sub = "barplot(..., space= 1.5, axisnames = FALSE)")
+```
+
+
+```{r}
+reset_prettyB()
+graphics::barplot.default(VADeaths, beside = TRUE,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),
+        legend = rownames(VADeaths), ylim = c(0, 100))
+
+barplot(VADeaths, beside = TRUE,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),
+        legend = rownames(VADeaths), ylim = c(0, 100))
+```
+
+
+
+title(main = "Death Rates in Virginia", font.main = 4)
+
+hh <- t(VADeaths)[, 5:1]
+mybarcol <- "gray20"
+mp <- barplot(hh, beside = TRUE,
+        col = c("lightblue", "mistyrose",
+                "lightcyan", "lavender"),
+        legend = colnames(VADeaths), ylim = c(0,100),
+        main = "Death Rates in Virginia", font.main = 4,
+        sub = "Faked upper 2*sigma error bars", col.sub = mybarcol,
+        cex.names = 1.5)
+segments(mp, hh, mp, hh + 2*sqrt(1000*hh/100), col = mybarcol, lwd = 1.5)
+stopifnot(dim(mp) == dim(hh))  # corresponding matrices
+mtext(side = 1, at = colMeans(mp), line = -2,
+      text = paste("Mean", formatC(colMeans(hh))), col = "red")
+
+# Bar shading example
+barplot(VADeaths, angle = 15+10*1:5, density = 20, col = "black",
+        legend = rownames(VADeaths))
+title(main = list("Death Rates in Virginia", font = 4))
+
+# border :
+barplot(VADeaths, border = "dark blue") 
+
+
+# log scales (not much sense here):
+barplot(tN, col = heat.colors(12), log = "y")
+barplot(tN, col = gray.colors(20), log = "xy")
+
+# args.legend
+barplot(height = cbind(x = c(465, 91) / 465 * 100,
+                       y = c(840, 200) / 840 * 100,
+                       z = c(37, 17) / 37 * 100),
+        beside = FALSE,
+        width = c(465, 840, 37),
+        col = c(1, 2),
+        legend.text = c("A", "B"),
+        args.legend = list(x = "topleft"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
