@@ -1,7 +1,7 @@
 Package: prettyB
 Type: Package
 Title: Pretty Base Graphics
-Version: 0.1.1.9002
+Version: 0.1.1.9003
 Authors@R: person(given="Colin", family="Gillespie",
     email="csgillespie@gmail.com", role = c("aut", "cre"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
