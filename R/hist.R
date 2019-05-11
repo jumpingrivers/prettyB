@@ -33,10 +33,14 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   args$right = right
   args$density = density
   args$angle = angle
-  args$main = main
+  main = if (missing(main)) paste("Histogram of", xname) else main
+  args$main = " "
+  sub = if( !is.null(args$sub)) args$sub else NULL
+  args$sub = NULL
   #args$xlim = xlim # Get xlim from hist_out below
 
   args$xlab = xlab
+  if (!missing(ylab)) args$ylab = ylab
   args$axes = axes
   args$plot = plot
   args$labels = labels
@@ -54,22 +58,28 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   args$plot = FALSE
   hist_out = suppressWarnings(do.call(graphics::hist.default, args))
 
-  if (missing(ylab))
-    args$ylab = if (!hist_out$equidist) "Density" else "Frequency"
-  else args$ylab = ylab
+  if (hist_out$equidist && (is.null(freq) || isTRUE(freq))) {
+    args$freq = TRUE
+  } else {
+    args$freq = FALSE
+  }
 
+  if (is.null(args$ylab)) {
+    args$ylab = if( isFALSE(args$freq)) "Density" else "Frequency"
+  }
   args$plot = plot
 
-  if (is.null(args$freq) || isTRUE(args$freq)) {
-    ticks_y = pretty(c(hist_out$counts, args$ylim, 0))
+  if (!is.null(args$ylim)) {
+    ticks_y = pretty(args$ylim)
+  } else  if (is.null(args$freq) || isTRUE(args$freq)) {
+    ticks_y = pretty(c(hist_out$counts, 0))
   } else {
-    ticks_y = pretty(c(hist_out$counts / sum(hist_out$counts, args$ylim, 0)))
+    ticks_y = pretty(c(hist_out$density, 0))
   }
 
   if (is.null(args$ylim)) {
     args$ylim = range(ticks_y)
   }
-
   ticks_x = pretty(c(hist_out$breaks, args$xlim))
   if (is.null(args$xlim)) {
     args$xlim = range(ticks_x)
@@ -77,15 +87,12 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   args$axes = FALSE
 
   ## Don't display title - use title()
-  args$main = " "
+
   graphics::plot.default(0, type = "n",
-               xlim = args$xlim, ylim = args$ylim,
-               bty = "n", axes = FALSE,
-               ylab = args$ylab, xlab = args$xlab,
-               panel.first = grid_lines_h(ticks_y))
-
-
-
+                         xlim = args$xlim, ylim = args$ylim,
+                         bty = "n", axes = FALSE,
+                         ylab = args$ylab, xlab = args$xlab,
+                         panel.first = grid_lines_h(ticks_y))
   args$add = TRUE
   hist_out = do.call(graphics::hist.default, args)
 
@@ -93,6 +100,7 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   add_x_axis(ticks_x)
   add_y_axis(ticks_y, tick = FALSE)
   add_title(main)
+  add_sub(sub)
 
   invisible(hist_out)
 }
