@@ -3,3 +3,4 @@ linters: with_defaults(
     commented_code_linter = NULL,
     NULL
     )
+comment_bot: FALSE
