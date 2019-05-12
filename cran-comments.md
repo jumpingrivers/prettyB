@@ -6,16 +6,11 @@
 - win-builder (all versions)
 - travis-ci (all versions)
 
-
 ## R CMD check results
 
 0 errors | 1 warnings | 1 note
 
- * Note: New submission
- * Warnings: S3 registeration of qqnorm.default. This package
- provides new versions of base graphics by over riding the defaults. qqnorm.default isn't 
- exported by stats, so I had to use :::
-
-## Release summary
-
- * First version
+ * Note: Previous version called par() onload. This have been removed.
+ * Warnings: Registered S3 methods from standard package(s) overwritten by 'prettyB':
+        - This package provides pretty versions of base graphics
+        - This is achieved by overwriting graphics::XXX.default functions

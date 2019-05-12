@@ -26,11 +26,11 @@ prettyB_pal = function(alpha = 255) {
 }
 
 .onUnload = function(libpath) {
-  if (!is.null(cache$par)) {
-    par(cache$par)
-  }
-
-  if (!is.null(cache$palette)) {
-    palette(cache$palette)
-  }
+  # if (!is.null(cache$par)) {
+  #   par(cache$par)
+  # }
+  #
+  # if (!is.null(cache$palette)) {
+  #   palette(cache$palette)
+  # }
 }
