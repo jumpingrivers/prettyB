@@ -35,7 +35,7 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   args$angle = angle
   main = if (missing(main)) paste("Histogram of", xname) else main
   args$main = " "
-  sub = if( !is.null(args$sub)) args$sub else NULL
+  sub = if (!is.null(args$sub)) args$sub else NULL
   args$sub = NULL
   #args$xlim = xlim # Get xlim from hist_out below
 
@@ -65,7 +65,7 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   }
 
   if (is.null(args$ylab)) {
-    args$ylab = if( isFALSE(args$freq)) "Density" else "Frequency"
+    args$ylab = if (isFALSE(args$freq)) "Density" else "Frequency"
   }
   args$plot = plot
 
