@@ -116,11 +116,6 @@ it a bit more consist. The author also provided a free
     [issue tracker](https://github.com/jumpingrivers/prettyB/issues)
   - Feel free to submit pull requests
 
-### TODO
-
-  - Box plots
-  - Vignettes: What defaults have been changed.
-
 -----
 
 Development of this package was supported by [Jumping
