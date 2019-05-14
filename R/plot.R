@@ -17,10 +17,9 @@ extend_axis = function(lim, eps = 0.02) lim + c(-1, 1) * diff(lim) * eps
 #' @param ... See \code{?graphics::plot.default}
 #' @importFrom graphics plot.default abline axTicks axis grid par title
 #' @importFrom grDevices xy.coords
-#' @method plot default
-#' @rdname plot
+#' @rdname plot.prettyB
 #' @export
-plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
+plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
                         log = "", main = NULL, sub = NULL,
                         xlab = NULL, ylab = NULL,
                         ann = par("ann"), axes = TRUE,
@@ -116,3 +115,7 @@ plot.default = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
   add_sub(sub)
   invisible(NULL)
 }
+
+#' @rdname plot.prettyB
+#' @export
+plotB = plot.prettyB

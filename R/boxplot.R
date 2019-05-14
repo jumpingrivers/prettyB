@@ -1,18 +1,4 @@
-#' @title PrettyB boxplot.formula function
-#'
-#' @description  This function overrides the default arguments. See
-#' \code{?graphics::boxplot.formula}. This function is identical to
-#' \code{?graphics::boxplot.formula}. However, since
-#' \code{?graphics::boxplot.formula} isn't exported, I had to make a copy.
-#' @param formula,data,... See \code{?graphics::boxplot.formula}
-#' @param subset,na.action,drop  See \code{?graphics::boxplot.formula}
-#' @param sep,lex.order  See \code{?graphics::boxplot.formula}
-#' @importFrom graphics boxplot
-#' @method boxplot formula
-#' @export
-#' @examples
-#' boxplot(count ~ spray, data = InsectSprays)
-boxplot.formula = function (formula, data = NULL, ..., subset, na.action = NULL,
+boxplot.formula = function(formula, data = NULL, ..., subset, na.action = NULL,
                             drop = FALSE, sep = ".", lex.order = FALSE) {
   if (missing(formula) || (length(formula) != 3L))
     stop("'formula' missing or incorrect")
@@ -27,7 +13,7 @@ boxplot.formula = function (formula, data = NULL, ..., subset, na.action = NULL,
   args = list(...)
   args$x = split(mf[[response]], mf[-response], drop = drop,
                  sep = sep, lex.order = lex.order)
-  do.call(boxplot.default, args)
+  do.call(boxplot.prettyB, args)
 }
 
 #' @title PrettyB boxplot.default function
@@ -39,14 +25,19 @@ boxplot.formula = function (formula, data = NULL, ..., subset, na.action = NULL,
 #' @param names,plot,border See \code{?graphics::boxplot.default}
 #' @param col,log,pars See \code{?graphics::boxplot.default}
 #' @param horizontal,add,at See \code{?graphics::boxplot.default}
+#' @importFrom graphics boxplot
 #' @export
-boxplot.default = function (x, ..., range = 1.5, width = NULL, varwidth = FALSE,
+boxplot.prettyB = function(x, ..., range = 1.5, width = NULL, varwidth = FALSE,
                             notch = FALSE, outline = TRUE, names,
                             plot = TRUE, border = par("fg"),
                             col = NULL, log = "",
                             pars = list(boxwex = 0.8, staplewex = 0.5,
                                         outwex = 0.5),
                             horizontal = FALSE, add = FALSE, at = NULL) {
+  if (class(x) == "formula") {
+    args = list(...)
+    x = do.call(boxplot.formula, args)
+  }
   setup_prettyB()
   ## Grab parameters
   args = list(...)
@@ -138,3 +129,7 @@ boxplot.default = function (x, ..., range = 1.5, width = NULL, varwidth = FALSE,
   }
   invisible(box_out)
 }
+
+#' @rdname boxplot.prettyB
+#' @export
+boxplotB = boxplot.prettyB

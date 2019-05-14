@@ -12,7 +12,7 @@
 #' @examples
 #' x = rlnorm(100)
 #' hist(x)
-hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
+hist.prettyB = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
                         include.lowest = TRUE, right = TRUE, density = NULL,
                         angle = 45, col = NULL, border = NULL,
                         main = paste("Histogram of", xname),
@@ -87,7 +87,6 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
   args$axes = FALSE
 
   ## Don't display title - use title()
-
   graphics::plot.default(0, type = "n",
                          xlim = args$xlim, ylim = args$ylim,
                          bty = "n", axes = FALSE,
@@ -104,3 +103,7 @@ hist.default = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
 
   invisible(hist_out)
 }
+
+#' @rdname hist.prettyB
+#' @export
+histB = hist.prettyB

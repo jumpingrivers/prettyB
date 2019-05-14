@@ -12,11 +12,10 @@
 #' @param offset,add,args.legend See \code{?graphics::barplot.default}
 #' @param ... See \code{?graphics::barplot.default}
 #' @importFrom graphics barplot.default barplot
-#' @method barplot default
 #' @export
 #' @examples
 #' barplot(VADeaths)
-barplot.default = function(height, width = 1, space = NULL, names.arg = NULL,
+barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
                            legend.text = NULL, beside = FALSE, horiz = FALSE,
                            density = NULL, angle = 45, col = NULL,
                            border = par("fg"), main = NULL,
@@ -145,3 +144,7 @@ barplot.default = function(height, width = 1, space = NULL, names.arg = NULL,
   res = do.call(graphics::barplot.default, args)
   invisible(res)
 }
+
+#' @rdname barplot.prettyB
+#' @export
+barplotB = barplot.prettyB
