@@ -3,8 +3,8 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
-Rplots.pdf
-^.travis.yml$
+Rplots\.pdf
+^\.travis\.yml$
 ^cran-comments\.md$
-^.lintr$
-
+^\.lintr$
+^tests/testthat/\.lintr$
