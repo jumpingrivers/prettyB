@@ -1,3 +1,5 @@
+# prettyB (development version)
+
 ## Version 0.2.1
   * Bug fix: Don't open plotting window when loading the package
   * Don't override default argument (CRAN request)
