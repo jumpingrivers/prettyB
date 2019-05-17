@@ -1,5 +1,5 @@
 ## Test environments
-- local x86_64-pc-linux-gnu install, R 3.5.3
+- local x86_64-pc-linux-gnu install, R 3.6.0
 - R-hub ubuntu-gcc-release (r-release)
 - R-hub windows-x86_64-devel (r-devel)
 - R-hub fedora-clang-devel (r-devel)
@@ -8,9 +8,6 @@
 
 ## R CMD check results
 
-0 errors | 1 warnings | 1 note
+0 errors | 0 warnings | 1 note
 
  * Note: Previous version called par() onload. This have been removed.
- * Warnings: Registered S3 methods from standard package(s) overwritten by 'prettyB':
-        - This package provides pretty versions of base graphics
-        - This is achieved by overwriting graphics::XXX.default functions
