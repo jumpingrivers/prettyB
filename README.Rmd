@@ -20,11 +20,13 @@ set.seed(1)
 ## Prettified Base Graphics
 
 [![Build Status](https://travis-ci.org/jumpingrivers/prettyB.svg?branch=master)](https://travis-ci.org/jumpingrivers/prettyB)
+[![CRAN](http://www.r-pkg.org/badges/version/prettyB)](https://cran.r-project.org/package=prettyB)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Coverage status](https://codecov.io/gh/jumpingrivers/prettyB/branch/master/graph/badge.svg)](https://codecov.io/github/jumpingrivers/prettyB?branch=master)
+[![Downloads](http://cranlogs.r-pkg.org/badges/prettyB?color=brightgreen)](https://cran.r-project.org/package=prettyB)
 
 Anyone who uses R Base graphics, have a 100 and 1 tweaks that they use to make the 
-figures more presentable. This package aims to capture the tweaks in one place. By _masking_
-standard plotting functions, we can automatically make base graphics a bit more pretty.
+figures more presentable. This package aims to capture the tweaks in one place. 
 
 ## Installation
 
@@ -51,17 +53,21 @@ is that the defaults have been changed. For example, compare
 
 ```{r, plot-minimal,fig.width=12}
 op = par(mfrow = c(1, 2))
-graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Sepal.Width)
+plot_p(iris$Sepal.Length, iris$Sepal.Width)
 ```
+
 When you first call a __prettyB__, it changes the underlying `par()` and
 `palette()`. You can reset this via
+
 ```{r}
 prettyB::reset_prettyB()
 ```
+
 The core idea of __prettyB__ is that no new arguments are introducted to the
 plot functions. This means, that no changes to existing code
 are required
+
 ```{r, plot-minimal-full,fig.width=6, echo = -1}
 op = par(mfrow = c(1, 1))
 plot(iris$Sepal.Length, iris$Sepal.Width, 
@@ -79,13 +85,13 @@ The package also prettifies other functions
     prettyB::reset_prettyB()
     par(mfrow = c(1, 2))
     z = rt(100, 4)
-    graphics::hist.default(z, main = "The t-distribution")
+    hist(z, main = "The t-distribution")
     hist(z, main = "The t-distribution")
     ```
   * barplots
     ```{r, echo=-1}
     par(mfrow = c(1, 2), cex = 0.9)
-    graphics::barplot.default(VADeaths, main = "Death Rates in Virginia")
+    barplot(VADeaths, main = "Death Rates in Virginia")
     barplot(VADeaths, main = "Death Rates in Virginia")
     ```
 
@@ -97,7 +103,7 @@ This package is __not__ a replacement for __ggplot2__ or other R related plottin
  * provide academics with a way of generating nice plots, but not worry about future changes in R
  * provide a simple way for improving the look and feel of plots in teaching
 
-Since the generated plots by __prettyB__ use standard base graphics, with no new arguments, this makes plots future proof. As a fall-back, just don't load the package. 
+Since the generated plots by __prettyB__ use standard base graphics, with no new arguments, this makes plots future proof. As a fall-back, just remove the `_p`.
 
 I picked up the general style a few years ago, but the book
 [Fundamentals of Data Visualization](https://amzn.to/2Hct447) has made it a bit 

@@ -5,13 +5,16 @@
 
 [![Build
 Status](https://travis-ci.org/jumpingrivers/prettyB.svg?branch=master)](https://travis-ci.org/jumpingrivers/prettyB)
+[![CRAN](http://www.r-pkg.org/badges/version/prettyB)](https://cran.r-project.org/package=prettyB)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Coverage
 status](https://codecov.io/gh/jumpingrivers/prettyB/branch/master/graph/badge.svg)](https://codecov.io/github/jumpingrivers/prettyB?branch=master)
+[![Downloads](http://cranlogs.r-pkg.org/badges/prettyB?color=brightgreen)](https://cran.r-project.org/package=prettyB)
 
 Anyone who uses R Base graphics, have a 100 and 1 tweaks that they use
 to make the figures more presentable. This package aims to capture the
-tweaks in one place. By *masking* standard plotting functions, we can
-automatically make base graphics a bit more pretty.
+tweaks in one place.
 
 ## Installation
 
@@ -41,11 +44,12 @@ difference is that the defaults have been changed. For example, compare
 
 ``` r
 op = par(mfrow = c(1, 2))
-graphics::plot.default(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Sepal.Width)
+plot_p(iris$Sepal.Length, iris$Sepal.Width)
 ```
 
 <img src="man/figures/README-plot-minimal-1.png" style="display: block; margin: auto;" />
+
 When you first call a **prettyB**, it changes the underlying `par()` and
 `palette()`. You can reset this via
 
@@ -74,7 +78,7 @@ The package also prettifies other functions
     
     ``` r
     z = rt(100, 4)
-    graphics::hist.default(z, main = "The t-distribution")
+    hist(z, main = "The t-distribution")
     hist(z, main = "The t-distribution")
     ```
     
@@ -83,7 +87,7 @@ The package also prettifies other functions
   - barplots
     
     ``` r
-    graphics::barplot.default(VADeaths, main = "Death Rates in Virginia")
+    barplot(VADeaths, main = "Death Rates in Virginia")
     barplot(VADeaths, main = "Death Rates in Virginia")
     ```
     
@@ -103,7 +107,7 @@ plotting packages. Instead, it has a few simple aims
 
 Since the generated plots by **prettyB** use standard base graphics,
 with no new arguments, this makes plots future proof. As a fall-back,
-just don’t load the package.
+just remove the `_p`.
 
 I picked up the general style a few years ago, but the book
 [Fundamentals of Data Visualization](https://amzn.to/2Hct447) has made
