@@ -8,3 +8,4 @@ Rplots\.pdf
 ^cran-comments\.md$
 ^\.lintr$
 ^tests/testthat/\.lintr$
+^tests/\.lintr$
