@@ -118,4 +118,4 @@ plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
 
 #' @rdname plot.prettyB
 #' @export
-plotB = plot.prettyB
+plot_p = plot.prettyB

@@ -20,13 +20,14 @@ instead, it's meant to just make the base graphics a little bit nicer.
 Due to the underlying structure of base graphics & S3 objects, some things aren't possible. 
 In particular, changing how non-exported plot-methods are displayed.
 
-The general idea is by simply loading the __prettyB__ package, plots
-just become a bit nicer! The current methods that are available are
+The general idea is the argument signitures are
+exactly the same as base graphics. But there are just a bit prettier.
+The current methods that are available are
 
- * `plot()`
- * `barplot()`
- * `boxplot()`
- * `hist()`
+ * `plot_p()`
+ * `barplot_p()`
+ * `boxplot_p()`
+ * `hist_p()`
 
 ## Histogram examples
 
@@ -38,8 +39,8 @@ not always)
 op = par(mfrow = c(1, 2))
 reset_prettyB()
 x = rlnorm(100)
-graphics::hist.default(x)
 hist(x)
+hist_p(x)
 ```
 
 Standard arguments work as well
@@ -47,9 +48,9 @@ Standard arguments work as well
 op = par(mfrow = c(1, 2))
 reset_prettyB()
 y = rnorm(100)
-graphics::hist.default(y, main = "Base Graphics", sub = "Sub heading", 
+hist(y, main = "Base Graphics", sub = "Sub heading", 
                        xlab = "x-axis", ylab = "y-axis")
-hist(y, main = "prettyB",  sub = "Sub heading", xlab = "x-axis", ylab = "y-axis")
+hist_p(y, main = "prettyB",  sub = "Sub heading", xlab = "x-axis", ylab = "y-axis")
 ```
 
 Colours and frequencies also work as is expected
@@ -57,8 +58,8 @@ Colours and frequencies also work as is expected
 op = par(mfrow = c(1, 2))
 reset_prettyB()
 z = rt(100, 4)
-graphics::hist.default(z, col = "grey60", freq = FALSE)
 hist(z, col = "grey60", freq = FALSE)
+hist_p(z, col = "grey60", freq = FALSE)
 ```
 
 ## Barplot examples
@@ -68,39 +69,45 @@ The `barplot()` has an amazing number of different configurations.
 ```{r, out.width="100%"}
 op = par(mfrow = c(1, 2))
 reset_prettyB()
-require(grDevices) # for colours
-tN <- table(Ni <- stats::rpois(100, lambda = 3))
-graphics::barplot.default(tN)
+library("grDevices") # for colours
+tN = table(stats::rpois(100, lambda = 3))
 barplot(tN)
+barplot_p(tN)
 ```
+
 The following examples are taken directly from the example page of `?barplot`.
 This means that sometimes the colours clash.
+
 ```{r}
 reset_prettyB()
-r = graphics::barplot.default(tN, col = rainbow(20))
-#- type = "h" plotting *is* 'bar'plot
-lines(r, tN, type = "h", col = "red", lwd = 2)
 r = barplot(tN, col = rainbow(20))
 #- type = "h" plotting *is* 'bar'plot
 lines(r, tN, type = "h", col = "red", lwd = 2)
+r = barplot_p(tN, col = rainbow(20))
+#- type = "h" plotting *is* 'bar'plot
+lines(r, tN, type = "h", col = "red", lwd = 2)
 ```
+
 Spacing and titles still work
+
 ```{r}
 reset_prettyB()
-graphics::barplot.default(tN, space = 1.5, axisnames = FALSE,
-        sub = "barplot(..., space= 1.5, axisnames = FALSE)")
 barplot(tN, space = 1.5, axisnames = FALSE,
         sub = "barplot(..., space= 1.5, axisnames = FALSE)")
+barplot_p(tN, space = 1.5, axisnames = FALSE,
+        sub = "barplot(..., space= 1.5, axisnames = FALSE)")
 ```
+
 So does the `beside` argument.
+
 ```{r}
 reset_prettyB()
-graphics::barplot.default(VADeaths, beside = TRUE,
+barplot(VADeaths, beside = TRUE,
         col = c("lightblue", "mistyrose", "lightcyan",
                 "lavender", "cornsilk"),
         legend = rownames(VADeaths), ylim = c(0, 100))
 
-barplot(VADeaths, beside = TRUE,
+barplot_p(VADeaths, beside = TRUE,
         col = c("lightblue", "mistyrose", "lightcyan",
                 "lavender", "cornsilk"),
         legend = rownames(VADeaths), ylim = c(0, 100))
@@ -110,8 +117,9 @@ barplot(VADeaths, beside = TRUE,
 
 ```{r}
 par(mfrow = c(1, 2))
-plot(1:100, rnorm(100), xlab = "X", ylab = "Y")
-boxplot(rnorm(100))
+plot_p(1:100, rnorm(100), xlab = "X", ylab = "Y")
+boxplot_p(rnorm(100), horizontal = TRUE, 
+          main = "A boxplot")
 ```
 
 

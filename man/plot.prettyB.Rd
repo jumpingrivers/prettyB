@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{plot.prettyB}
 \alias{plot.prettyB}
-\alias{plotB}
+\alias{plot_p}
 \title{PrettyB plot.default function}
 \usage{
 \method{plot}{prettyB}(x, y = NULL, type = "p", xlim = NULL,
@@ -10,7 +10,7 @@
   ylab = NULL, ann = par("ann"), axes = TRUE, frame.plot = axes,
   panel.first = NULL, panel.last = NULL, asp = NA, ...)
 
-plotB(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
+plot_p(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
   log = "", main = NULL, sub = NULL, xlab = NULL, ylab = NULL,
   ann = par("ann"), axes = TRUE, frame.plot = axes,
   panel.first = NULL, panel.last = NULL, asp = NA, ...)

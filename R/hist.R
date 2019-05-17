@@ -106,4 +106,4 @@ hist.prettyB = function(x, breaks = "Sturges", freq = NULL, probability = !freq,
 
 #' @rdname hist.prettyB
 #' @export
-histB = hist.prettyB
+hist_p = hist.prettyB

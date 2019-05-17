@@ -132,4 +132,4 @@ boxplot.prettyB = function(x, ..., range = 1.5, width = NULL, varwidth = FALSE,
 
 #' @rdname boxplot.prettyB
 #' @export
-boxplotB = boxplot.prettyB
+boxplot_p = boxplot.prettyB

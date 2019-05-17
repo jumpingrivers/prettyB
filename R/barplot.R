@@ -145,6 +145,7 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
   invisible(res)
 }
 
+
 #' @rdname barplot.prettyB
 #' @export
-barplotB = barplot.prettyB
+barplot_p = barplot.prettyB

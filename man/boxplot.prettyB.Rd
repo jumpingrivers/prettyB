@@ -2,7 +2,7 @@
 % Please edit documentation in R/boxplot.R
 \name{boxplot.prettyB}
 \alias{boxplot.prettyB}
-\alias{boxplotB}
+\alias{boxplot_p}
 \title{PrettyB boxplot.default function}
 \usage{
 \method{boxplot}{prettyB}(x, ..., range = 1.5, width = NULL,
@@ -11,7 +11,7 @@
   pars = list(boxwex = 0.8, staplewex = 0.5, outwex = 0.5),
   horizontal = FALSE, add = FALSE, at = NULL)
 
-boxplotB(x, ..., range = 1.5, width = NULL, varwidth = FALSE,
+boxplot_p(x, ..., range = 1.5, width = NULL, varwidth = FALSE,
   notch = FALSE, outline = TRUE, names, plot = TRUE,
   border = par("fg"), col = NULL, log = "", pars = list(boxwex =
   0.8, staplewex = 0.5, outwex = 0.5), horizontal = FALSE, add = FALSE,

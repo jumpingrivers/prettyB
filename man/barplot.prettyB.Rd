@@ -2,7 +2,7 @@
 % Please edit documentation in R/barplot.R
 \name{barplot.prettyB}
 \alias{barplot.prettyB}
-\alias{barplotB}
+\alias{barplot_p}
 \title{PrettyB barplot.default function}
 \usage{
 \method{barplot}{prettyB}(height, width = 1, space = NULL,
@@ -14,7 +14,7 @@
   cex.names = par("cex.axis"), inside = TRUE, plot = TRUE,
   axis.lty = 0, offset = 0, add = FALSE, args.legend = NULL, ...)
 
-barplotB(height, width = 1, space = NULL, names.arg = NULL,
+barplot_p(height, width = 1, space = NULL, names.arg = NULL,
   legend.text = NULL, beside = FALSE, horiz = FALSE,
   density = NULL, angle = 45, col = NULL, border = par("fg"),
   main = NULL, sub = NULL, xlab = NULL, ylab = NULL, xlim = NULL,
