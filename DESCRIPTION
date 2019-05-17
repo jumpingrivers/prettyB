@@ -5,8 +5,8 @@ Version: 0.2.1
 Authors@R: person(given="Colin", family="Gillespie",
     email="csgillespie@gmail.com", role = c("aut", "cre"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
-Description: Modifications to standard base graphics, by masking function base function
-  calls.
+Description: Drop-in replacements for standard base graphics functions. The 
+    replacements are prettier versions of the originals.
 URL: https://github.com/jumpingrivers/prettyB/
 BugReports: https://github.com/jumpingrivers/prettyB//issues
 License: GPL-2 | GPL-3
