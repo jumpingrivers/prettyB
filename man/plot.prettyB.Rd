@@ -34,3 +34,6 @@ plot_p(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
 This function overrides the default arguments. See
 \code{?graphics::plot.default}
 }
+\examples{
+plot_p(1:10, 1:10)
+}

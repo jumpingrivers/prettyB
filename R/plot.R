@@ -19,7 +19,7 @@ extend_axis = function(lim, eps = 0.02) lim + c(-1, 1) * diff(lim) * eps
 #' @importFrom grDevices xy.coords
 #' @rdname plot.prettyB
 #' @export
-#' @example
+#' @examples
 #' plot_p(1:10, 1:10)
 plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
                         log = "", main = NULL, sub = NULL,
