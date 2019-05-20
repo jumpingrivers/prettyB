@@ -37,4 +37,3 @@ setup_prettyB = function() {
                    logical(1))
   graphics::par(new_par[changes])
 }
-
