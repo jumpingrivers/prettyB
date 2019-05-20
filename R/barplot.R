@@ -32,23 +32,16 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
 
   # Unchanged Arguments
   args = list(...)
-  args$height = height
-  args$width = width
-  args$space = space
-  args$names.arg = names.arg
-  args$legend.text = legend.text
-  args$beside = beside
-  args$horiz = horiz
-  args$density = density
-  args$angle = angle
+  args$height = height; args$width = width; args$space = space
+  args$names.arg = names.arg; args$legend.text = legend.text
+  args$beside = beside; args$horiz = horiz
+  args$density = density; args$angle = angle
   # barplot normally takes care of this
   # But we do a pass through plot first for grid lines
   args$xlab = if (missing(xlab)) NA else xlab
   args$ylab = if (missing(ylab)) NA else ylab
-  args$xpd = xpd
-  args$log = log
-  args$axisnames = axisnames
-  args$cex.axis = cex.axis
+  args$xpd = xpd; args$log = log
+  args$axisnames = axisnames; args$cex.axis = cex.axis
   args$cex.names = cex.names
   # inside isn't actually implemented
   if (!missing(inside)) args$inside = inside

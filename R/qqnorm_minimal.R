@@ -1,3 +1,5 @@
+#lty = 3, col =2, lwd = 2
+
 # qqnorm_minimal = function(y, ...) {
 #
 #   ## Set up par

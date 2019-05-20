@@ -19,10 +19,8 @@ setup_prettyB = function() {
   new_par = list(mar = c(3, 3, 2, 1), mgp = c(2, 0.4, 0), tck = -.01,
                  cex.axis = 0.9, las = 1,
                  xaxs = "i", yaxs = "i",
-                 col.lab = "grey50",
-                 col.main = "grey20",
-                 pch = 21, col = 1,
-                 lwd = 1.5)
+                 col.lab = "grey50", col.main = "grey20",
+                 pch = 21, col = 1, lwd = 1.5)
   new_par_names = names(new_par)
   cur_par = par(no.readonly = TRUE)
   if (is.null(cache$par)) {
@@ -40,16 +38,3 @@ setup_prettyB = function() {
   graphics::par(new_par[changes])
 }
 
-
-#
-#
-# set_par_minimal = function() {
-#   par_min = list(mar = c(3, 3, 2, 1), mgp = c(2, 0.4, 0), tck = -.01,
-#                  cex.axis = 0.9, las = 1,
-#                  xaxs = "i", yaxs = "i",
-#                  col.lab = "grey50",
-#                  col.main = "grey20",
-#                  pch = 21, col = 1,
-#                  lwd = 1.5)
-#   set_par(par_min)
-# }
