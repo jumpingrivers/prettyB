@@ -7,5 +7,4 @@ Rplots\.pdf
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^\.lintr$
-^tests/testthat/\.lintr$
-^tests/\.lintr$
+^inst/\.lintr$
