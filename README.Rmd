@@ -70,7 +70,7 @@ are required
 
 ```{r, plot-minimal-full,fig.width=6, echo = -1}
 op = par(mfrow = c(1, 1))
-plot(iris$Sepal.Length, iris$Sepal.Width, 
+plot_p(iris$Sepal.Length, iris$Sepal.Width, 
      xlab = "Length", ylab = "Width",
      main = "The Iris data set", 
      sub = "I hate this data too")
@@ -86,13 +86,13 @@ The package also prettifies other functions
     par(mfrow = c(1, 2))
     z = rt(100, 4)
     hist(z, main = "The t-distribution")
-    hist(z, main = "The t-distribution")
+    hist_p(z, main = "The t-distribution")
     ```
   * barplots
     ```{r, echo=-1}
     par(mfrow = c(1, 2), cex = 0.9)
     barplot(VADeaths, main = "Death Rates in Virginia")
-    barplot(VADeaths, main = "Death Rates in Virginia")
+    barplot_p(VADeaths, main = "Death Rates in Virginia")
     ```
 
 ## Package Rationale

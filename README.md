@@ -62,7 +62,7 @@ the plot functions. This means, that no changes to existing code are
 required
 
 ``` r
-plot(iris$Sepal.Length, iris$Sepal.Width, 
+plot_p(iris$Sepal.Length, iris$Sepal.Width, 
      xlab = "Length", ylab = "Width",
      main = "The Iris data set", 
      sub = "I hate this data too")
@@ -79,7 +79,7 @@ The package also prettifies other functions
     ``` r
     z = rt(100, 4)
     hist(z, main = "The t-distribution")
-    hist(z, main = "The t-distribution")
+    hist_p(z, main = "The t-distribution")
     ```
     
     <img src="man/figures/README-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
@@ -88,7 +88,7 @@ The package also prettifies other functions
     
     ``` r
     barplot(VADeaths, main = "Death Rates in Virginia")
-    barplot(VADeaths, main = "Death Rates in Virginia")
+    barplot_p(VADeaths, main = "Death Rates in Virginia")
     ```
     
     <img src="man/figures/README-unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
