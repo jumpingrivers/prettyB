@@ -61,7 +61,7 @@ plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
     ticks_x = pretty(xlim)
     xlim = range(ticks_x)
   } else if (is_x(log) && is.null(xlim)) {
-    ticks_x = 10^pretty(log10(x_tmp))
+    ticks_x = 10 ^ pretty(log10(x_tmp))
     xlim = range(ticks_x)
   } #else  {
     #ticks_x = 10^pretty(log10(xlim))
@@ -79,7 +79,7 @@ plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
     ticks_y = pretty(ylim)
     ylim = range(ticks_y)
   } else if (is_y(log) && is.null(ylim)) {
-    ticks_y = 10^pretty(log10(y_tmp))
+    ticks_y = 10 ^ pretty(log10(y_tmp))
     ylim = range(ticks_y)
   } #else  {
 #    ticks_y = 10^pretty(log10(ylim))
@@ -107,7 +107,7 @@ plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
   args$axes = FALSE
 
   ## Log scales are a pain; pretty doesn't work
-  if (!((is_y(log) && !is.null(ylim)))) {
+  if (!(is_y(log) && !is.null(ylim))) {
     args$panel.first = substitute(grid_lines_h(ticks_y))
   }
 
@@ -133,7 +133,7 @@ plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
     add_y_axis(ticks_y, tick = FALSE)
   }
 
-  if (((is_y(log) && !is.null(ylim)))) {
+  if (is_y(log) && !is.null(ylim)) {
     grid_lines_h(ticks_y)
   }
   # Add axis & title
