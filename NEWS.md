@@ -1,4 +1,6 @@
 # prettyB (development version)
+  * Export add_y_axis & add_x_axis tick functions
+  * Improved `plot()` logic for the log scale
 
 ## Version 0.2.1
   * Bug fix: Don't open plotting window when loading the package

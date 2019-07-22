@@ -48,32 +48,43 @@ plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
     x_tmp = x
     y_tmp = y
   }
-
+  #xlim = c(1e1, 120)
   ## Now check for log scales
-  if (is.null(xlim) && is_x(log)) {
-    xlim = extend_axis(range(x_tmp))
-  }
+  #if (is.null(xlim) && is_x(log)) {
+  #  xlim = extend_axis(range(x_tmp))
+  #}
 
-  if (is.null(xlim)) {
+  if (is.null(xlim) && !is_x(log)) {
     ticks_x = pretty(x_tmp)
     xlim = extend_axis(range(ticks_x))
-  } else {
-    ticks_x = pretty(c(xlim, x_tmp))
+  } else if (!is_x(log)) {
+    ticks_x = pretty(xlim)
     xlim = range(ticks_x)
-  }
-
+  } else if (is_x(log) && is.null(xlim)) {
+    ticks_x = 10^pretty(log10(x_tmp))
+    xlim = range(ticks_x)
+  } #else  {
+    #ticks_x = 10^pretty(log10(xlim))
+    #xlim = range(ticks_x)
+  #}
   ## Now check for log scales
-  if (is.null(ylim) && is_y(log)) {
-    ylim = extend_axis(range(y_tmp))
-  }
+  #if (is.null(ylim) && is_y(log)) {
+  #  ylim = extend_axis(range(y_tmp))
+  #}
 
-  if (is.null(ylim)) {
+  if (is.null(ylim) && !is_y(log)) {
     ticks_y = pretty(y_tmp)
     ylim = extend_axis(range(ticks_y))
-  } else {
-    ticks_y = pretty(c(ylim, y_tmp))
+  } else if (!is_y(log)) {
+    ticks_y = pretty(ylim)
     ylim = range(ticks_y)
-  }
+  } else if (is_y(log) && is.null(ylim)) {
+    ticks_y = 10^pretty(log10(y_tmp))
+    ylim = range(ticks_y)
+  } #else  {
+#    ticks_y = 10^pretty(log10(ylim))
+#    ylim = range(ticks_y)
+#  }
 
   # Unchanged Arguments
   args = list(...)
@@ -94,25 +105,38 @@ plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
   args$main = NULL
   args$sub = NULL
   args$axes = FALSE
-  args$panel.first = substitute(grid_lines_h(ticks_y))
+
+  ## Log scales are a pain; pretty doesn't work
+  if (!((is_y(log) && !is.null(ylim)))) {
+    args$panel.first = substitute(grid_lines_h(ticks_y))
+  }
 
   if (is.null(args$pch)) args$pch = 21
   if (is.null(args$bg)) args$bg = 1
 
   # Call to default plot
   do.call(graphics::plot.default, args)
-
+  message(args$xaxt)
   ## Now add in tick marks and labels
+
   if (is_x(log)) {
     ticks_x = axTicks(1)
+  }
+  if (is.null(args$xaxt) || args$xaxt != "n") {
+    add_x_axis(ticks_x)
   }
   if (is_y(log)) {
     ticks_y = axTicks(2)
   }
+  if (is.null(args$yaxt) || args$yaxt != "n") {
 
+    add_y_axis(ticks_y, tick = FALSE)
+  }
+
+  if (((is_y(log) && !is.null(ylim)))) {
+    grid_lines_h(ticks_y)
+  }
   # Add axis & title
-  add_x_axis(ticks_x)
-  add_y_axis(ticks_y, tick = FALSE)
   add_title(main)
   add_sub(sub)
   invisible(NULL)

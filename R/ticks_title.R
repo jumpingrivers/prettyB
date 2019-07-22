@@ -6,6 +6,8 @@ grid_lines_v = function(locations) {
   abline(v = locations, col = "grey90", lty = 1)
 }
 
+#' @rdname add_y_axis
+#' @export
 add_x_axis = function(ticks_x, labels = ticks_x, tick = TRUE, lwd = 0,
                       lwd.ticks = 1) {
   axis(1, ticks_x, labels,
@@ -13,6 +15,16 @@ add_x_axis = function(ticks_x, labels = ticks_x, tick = TRUE, lwd = 0,
        col.axis = "grey30", col.ticks = "grey20")
 }
 
+#' @title Add tick marks to x/y axis
+#'
+#' A nicer set of default tick marks
+#' @param ticks_y location of y tick mark
+#' @param ticks_x location of x tick mark
+#' @param labels tick label
+#' @param tick Display tick mark
+#' @param lwd width of line
+#' @param lwd.ticks width of tick mark
+#' @export
 add_y_axis = function(ticks_y, labels = ticks_y, tick = TRUE, lwd = 0,
                       lwd.ticks = 1) {
   axis(2, ticks_y, labels,
