@@ -57,7 +57,7 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
   if (!is.null(col)) {
     args$col = col
   } else if (is.matrix(height)) {
-    args$col = 1:NROW(height)
+    args$col = seq_len(NROW(height))
   } else {
     args$col = 1
   }
@@ -114,7 +114,7 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
     lab = colnames(height)
   } else {
     lab_loc = res
-    if (is.matrix(height) ){
+    if (is.matrix(height)) {
       lab = colnames(height)
     } else {
       lab_loc = res

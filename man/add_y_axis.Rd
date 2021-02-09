@@ -7,11 +7,9 @@
 
 A nicer set of default tick marks}
 \usage{
-add_x_axis(ticks_x, labels = ticks_x, tick = TRUE, lwd = 0,
-  lwd.ticks = 1)
+add_x_axis(ticks_x, labels = ticks_x, tick = TRUE, lwd = 0, lwd.ticks = 1)
 
-add_y_axis(ticks_y, labels = ticks_y, tick = TRUE, lwd = 0,
-  lwd.ticks = 1)
+add_y_axis(ticks_y, labels = ticks_y, tick = TRUE, lwd = 0, lwd.ticks = 1)
 }
 \arguments{
 \item{ticks_x}{location of x tick mark}

@@ -42,7 +42,7 @@ plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
 
   ## Do we have a y?
   if (is.null(y)) {
-    x_tmp = 1:length(x)
+    x_tmp = seq_along(x)
     y_tmp = x
   } else {
     x_tmp = x

@@ -5,15 +5,45 @@
 \alias{plot_p}
 \title{PrettyB plot.default function}
 \usage{
-\method{plot}{prettyB}(x, y = NULL, type = "p", xlim = NULL,
-  ylim = NULL, log = "", main = NULL, sub = NULL, xlab = NULL,
-  ylab = NULL, ann = par("ann"), axes = TRUE, frame.plot = axes,
-  panel.first = NULL, panel.last = NULL, asp = NA, ...)
+\method{plot}{prettyB}(
+  x,
+  y = NULL,
+  type = "p",
+  xlim = NULL,
+  ylim = NULL,
+  log = "",
+  main = NULL,
+  sub = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ann = par("ann"),
+  axes = TRUE,
+  frame.plot = axes,
+  panel.first = NULL,
+  panel.last = NULL,
+  asp = NA,
+  ...
+)
 
-plot_p(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
-  log = "", main = NULL, sub = NULL, xlab = NULL, ylab = NULL,
-  ann = par("ann"), axes = TRUE, frame.plot = axes,
-  panel.first = NULL, panel.last = NULL, asp = NA, ...)
+plot_p(
+  x,
+  y = NULL,
+  type = "p",
+  xlim = NULL,
+  ylim = NULL,
+  log = "",
+  main = NULL,
+  sub = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  ann = par("ann"),
+  axes = TRUE,
+  frame.plot = axes,
+  panel.first = NULL,
+  panel.last = NULL,
+  asp = NA,
+  ...
+)
 }
 \arguments{
 \item{x, y, type, log}{See \code{?graphics::plot.default}}

@@ -1,6 +1,7 @@
 linters: with_defaults(
     assignment_linter = NULL, # 20
     commented_code_linter = NULL,
-    NULL
-    )
+    object_name_linter = NULL,
+    line_length_linter(100),
+    cyclocomp_linter = NULL)
 comment_bot: FALSE

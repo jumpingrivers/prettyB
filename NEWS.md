@@ -1,4 +1,4 @@
-# prettyB (development version)
+# prettyB 0.2.2 _2021-02-09_
   * Export add_y_axis & add_x_axis tick functions
   * Improved `plot()` logic for the log scale
 

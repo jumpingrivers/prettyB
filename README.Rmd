@@ -19,7 +19,7 @@ set.seed(1)
 
 ## Prettified Base Graphics
 
-[![Build Status](https://travis-ci.org/jumpingrivers/prettyB.svg?branch=master)](https://travis-ci.org/jumpingrivers/prettyB)
+[![R-CMD-check](https://github.com/jumpingrivers/prettyB/workflows/R-CMD-check/badge.svg)](https://github.com/jumpingrivers/prettyB/actions)
 [![CRAN](http://www.r-pkg.org/badges/version/prettyB)](https://cran.r-project.org/package=prettyB)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Coverage status](https://codecov.io/gh/jumpingrivers/prettyB/branch/master/graph/badge.svg)](https://codecov.io/github/jumpingrivers/prettyB?branch=master)
