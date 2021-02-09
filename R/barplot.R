@@ -26,8 +26,6 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
                            cex.names = par("cex.axis"), inside = TRUE,
                            plot = TRUE, axis.lty = 0, offset = 0,
                            add = FALSE, args.legend = NULL, ...) {
-  # op = set_par_minimal()
-  # on.exit(par(op))
   setup_prettyB()
 
   # Unchanged Arguments
@@ -124,10 +122,10 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
 
   if (isTRUE(args$horiz)) {
     add_x_axis(ticks_x, tick = FALSE)
-    add_y_axis(lab_loc, labels = lab, tick = FALSE)
+    if (isTRUE(axisnames)) add_y_axis(lab_loc, labels = lab, tick = FALSE)
   } else {
     add_y_axis(ticks_y, tick = FALSE)
-    add_x_axis(lab_loc, labels = lab, tick = FALSE)
+    if (isTRUE(axisnames)) add_x_axis(lab_loc, labels = lab, tick = FALSE)
   }
   add_title(main)
   add_sub(sub)

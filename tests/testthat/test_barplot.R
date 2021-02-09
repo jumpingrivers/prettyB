@@ -11,4 +11,6 @@ test_that("Testing barplot", {
                               barplot_p(VADeaths, xlab = "X", ylab = "Y",
                                       main = "Main", sub = "Sub"))
 
+  expect_doppelganger("barplot basic no axisnames",
+                      barplot_p(VADeaths, axisnames = FALSE))
 })

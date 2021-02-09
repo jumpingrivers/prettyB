@@ -3,6 +3,7 @@
   * Improved `plot()` logic for the log scale
   * Conditionally use {vdiffr} for testing (CRAN request)
   * Bug: plot matrices fixes #13 (thanks to @gmonaie)
+  * BUg: barplot and axisnames. Fixes #14 (thanks to @yikeshu0611)
 
 ## Version 0.2.1
   * Bug fix: Don't open plotting window when loading the package

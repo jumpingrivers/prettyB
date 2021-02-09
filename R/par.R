@@ -1,4 +1,4 @@
-#' @title Set up par and palette
+#' Set up par and palette
 #'
 #' Sets up par and palette
 #' @export
