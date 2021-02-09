@@ -2,7 +2,7 @@
   * Export add_y_axis & add_x_axis tick functions
   * Improved `plot()` logic for the log scale
   * Conditionally use {vdiffr} for testing (CRAN request)
-  * Bug: plot matrixes fixes #13 (thanks to @gmonaie)
+  * Bug: plot matrices fixes #13 (thanks to @gmonaie)
 
 ## Version 0.2.1
   * Bug fix: Don't open plotting window when loading the package
