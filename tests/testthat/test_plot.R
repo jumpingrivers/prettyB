@@ -26,4 +26,10 @@ test_that("Testing plot", {
                               plot(iris$Sepal.Length ~ iris$Sepal.Width)
   )
 
+  ## Testing matrix
+  x = matrix(c(41:60, 11:30, 51:70), ncol = 3)
+  expect_doppelganger("Plot x-y-mat", plot_p(x))
+  expect_doppelganger("Plot x-y-mat-single-vector", plot_p(x[, 1], 1:20))
+  expect_doppelganger("Plot x-y-mat-single", plot_p(x[, 1]))
+
 })

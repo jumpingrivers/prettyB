@@ -40,9 +40,19 @@ plot.prettyB = function(x, y = NULL, type = "p", xlim = NULL, ylim = NULL,
   # op = set_par_minimal()
   # on.exit(par(op))
 
+  if (is.matrix(x)) {
+    if (ncol(x) > 1 && !is.null(y)) {
+      stop("x and y have different lengths (x is a matrix)", call. = FALSE)
+    }
+    if (ncol(x) > 1) {
+      y = x[, 2]
+    }
+    x = x[, 1]
+  }
+
   ## Do we have a y?
   if (is.null(y)) {
-    x_tmp = seq_along(x)
+    x_tmp = seq_len(NROW(x)) # Handles the vector and matrix case
     y_tmp = x
   } else {
     x_tmp = x
