@@ -21,6 +21,7 @@ Suggests:
     covr,
     knitr,
     lintr,
+    rmarkdown,
     testthat,
     vdiffr
 VignetteBuilder: 

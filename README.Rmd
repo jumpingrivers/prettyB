@@ -21,7 +21,7 @@ set.seed(1)
 
 [![R-CMD-check](https://github.com/jumpingrivers/prettyB/workflows/R-CMD-check/badge.svg)](https://github.com/jumpingrivers/prettyB/actions)
 [![CRAN](http://www.r-pkg.org/badges/version/prettyB)](https://cran.r-project.org/package=prettyB)
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Coverage status](https://codecov.io/gh/jumpingrivers/prettyB/branch/master/graph/badge.svg)](https://codecov.io/github/jumpingrivers/prettyB?branch=master)
 [![Downloads](http://cranlogs.r-pkg.org/badges/prettyB?color=brightgreen)](https://cran.r-project.org/package=prettyB)
 
@@ -106,7 +106,7 @@ This package is __not__ a replacement for __ggplot2__ or other R related plottin
 Since the generated plots by __prettyB__ use standard base graphics, with no new arguments, this makes plots future proof. As a fall-back, just remove the `_p`.
 
 I picked up the general style a few years ago, but the book
-[Fundamentals of Data Visualization](https://amzn.to/2Hct447) has made it a bit 
+[Fundamentals of Data Visualization](https://www.amazon.com/Fundamentals-Data-Visualization-Informative-Compelling/dp/1492031089/) has made it a bit 
 more consist. The author also provided a free 
 [online](https://serialmentor.com/dataviz/) version.
 
