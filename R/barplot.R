@@ -26,8 +26,6 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
                            cex.names = par("cex.axis"), inside = TRUE,
                            plot = TRUE, axis.lty = 0, offset = 0,
                            add = FALSE, args.legend = NULL, ...) {
-  # op = set_par_minimal()
-  # on.exit(par(op))
   setup_prettyB()
 
   # Unchanged Arguments
@@ -57,7 +55,7 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
   if (!is.null(col)) {
     args$col = col
   } else if (is.matrix(height)) {
-    args$col = 1:NROW(height)
+    args$col = seq_len(NROW(height))
   } else {
     args$col = 1
   }
@@ -114,7 +112,7 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
     lab = colnames(height)
   } else {
     lab_loc = res
-    if (is.matrix(height) ){
+    if (is.matrix(height)) {
       lab = colnames(height)
     } else {
       lab_loc = res
@@ -124,10 +122,10 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
 
   if (isTRUE(args$horiz)) {
     add_x_axis(ticks_x, tick = FALSE)
-    add_y_axis(lab_loc, labels = lab, tick = FALSE)
+    if (isTRUE(axisnames)) add_y_axis(lab_loc, labels = lab, tick = FALSE)
   } else {
     add_y_axis(ticks_y, tick = FALSE)
-    add_x_axis(lab_loc, labels = lab, tick = FALSE)
+    if (isTRUE(axisnames)) add_x_axis(lab_loc, labels = lab, tick = FALSE)
   }
   add_title(main)
   add_sub(sub)

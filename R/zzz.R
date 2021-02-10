@@ -13,7 +13,7 @@ prettyB_pal = function(alpha = 255) {
 }
 
 #' @importFrom grDevices palette rgb
-.onLoad = function(libname, pkgname){
+.onLoad = function(libname, pkgname) {
 
   # Cache current values
   cache$palette = NULL

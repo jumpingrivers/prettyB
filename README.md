@@ -3,11 +3,10 @@
 
 ## Prettified Base Graphics
 
-[![Build
-Status](https://travis-ci.org/jumpingrivers/prettyB.svg?branch=master)](https://travis-ci.org/jumpingrivers/prettyB)
+[![R-CMD-check](https://github.com/jumpingrivers/prettyB/workflows/R-CMD-check/badge.svg)](https://github.com/jumpingrivers/prettyB/actions)
 [![CRAN](http://www.r-pkg.org/badges/version/prettyB)](https://cran.r-project.org/package=prettyB)
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Coverage
 status](https://codecov.io/gh/jumpingrivers/prettyB/branch/master/graph/badge.svg)](https://codecov.io/github/jumpingrivers/prettyB?branch=master)
 [![Downloads](http://cranlogs.r-pkg.org/badges/prettyB?color=brightgreen)](https://cran.r-project.org/package=prettyB)
@@ -46,6 +45,7 @@ difference is that the defaults have been changed. For example, compare
 op = par(mfrow = c(1, 2))
 plot(iris$Sepal.Length, iris$Sepal.Width)
 plot_p(iris$Sepal.Length, iris$Sepal.Width)
+#> 
 ```
 
 <img src="man/figures/README-plot-minimal-1.png" style="display: block; margin: auto;" />
@@ -66,6 +66,7 @@ plot_p(iris$Sepal.Length, iris$Sepal.Width,
      xlab = "Length", ylab = "Width",
      main = "The Iris data set", 
      sub = "I hate this data too")
+#> 
 ```
 
 <img src="man/figures/README-plot-minimal-full-1.png" style="display: block; margin: auto;" />
@@ -74,23 +75,23 @@ plot_p(iris$Sepal.Length, iris$Sepal.Width,
 
 The package also prettifies other functions
 
-  - Histograms
-    
+-   Histograms
+
     ``` r
     z = rt(100, 4)
     hist(z, main = "The t-distribution")
     hist_p(z, main = "The t-distribution")
     ```
-    
+
     <img src="man/figures/README-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
-  - barplots
-    
+-   barplots
+
     ``` r
     barplot(VADeaths, main = "Death Rates in Virginia")
     barplot_p(VADeaths, main = "Death Rates in Virginia")
     ```
-    
+
     <img src="man/figures/README-unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 ## Package Rationale
@@ -98,11 +99,11 @@ The package also prettifies other functions
 This package is **not** a replacement for **ggplot2** or other R related
 plotting packages. Instead, it has a few simple aims
 
-  - provide package authors a low dependency method of making their
+-   provide package authors a low dependency method of making their
     plots look pretty
-  - provide academics with a way of generating nice plots, but not worry
+-   provide academics with a way of generating nice plots, but not worry
     about future changes in R
-  - provide a simple way for improving the look and feel of plots in
+-   provide a simple way for improving the look and feel of plots in
     teaching
 
 Since the generated plots by **prettyB** use standard base graphics,
@@ -110,17 +111,18 @@ with no new arguments, this makes plots future proof. As a fall-back,
 just remove the `_p`.
 
 I picked up the general style a few years ago, but the book
-[Fundamentals of Data Visualization](https://amzn.to/2Hct447) has made
-it a bit more consist. The author also provided a free
+[Fundamentals of Data
+Visualization](https://www.amazon.com/Fundamentals-Data-Visualization-Informative-Compelling/dp/1492031089/)
+has made it a bit more consist. The author also provided a free
 [online](https://serialmentor.com/dataviz/) version.
 
 ## Other information
 
-  - If you have any suggestions or find bugs, please use the github
+-   If you have any suggestions or find bugs, please use the github
     [issue tracker](https://github.com/jumpingrivers/prettyB/issues)
-  - Feel free to submit pull requests
+-   Feel free to submit pull requests
 
------
+------------------------------------------------------------------------
 
 Development of this package was supported by [Jumping
 Rivers](https://www.jumpingrivers.com)

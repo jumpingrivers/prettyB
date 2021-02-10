@@ -32,7 +32,7 @@
 #   ## Need to remove main from new_args & pass it to do.call
 #   new_args$main = NULL
 #   res = do.call(stats_qqnorm_default, c(list(substitute(y), main=NULL), new_args))
-#   if(is_y(old_args$log)){
+#   if(is_y(old_args$log)) {
 #     ticks_y = axTicks(2)
 #   }
 #

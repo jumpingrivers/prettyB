@@ -8,3 +8,4 @@ Rplots\.pdf
 ^cran-comments\.md$
 ^\.lintr$
 ^inst/\.lintr$
+^\.github$

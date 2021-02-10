@@ -5,19 +5,53 @@
 \alias{hist_p}
 \title{PrettyB hist.default function}
 \usage{
-\method{hist}{prettyB}(x, breaks = "Sturges", freq = NULL,
-  probability = !freq, include.lowest = TRUE, right = TRUE,
-  density = NULL, angle = 45, col = NULL, border = NULL,
-  main = paste("Histogram of", xname), xlim = range(breaks),
-  ylim = NULL, xlab = xname, ylab, axes = TRUE, plot = TRUE,
-  labels = FALSE, nclass = NULL, warn.unused = TRUE, ...)
+\method{hist}{prettyB}(
+  x,
+  breaks = "Sturges",
+  freq = NULL,
+  probability = !freq,
+  include.lowest = TRUE,
+  right = TRUE,
+  density = NULL,
+  angle = 45,
+  col = NULL,
+  border = NULL,
+  main = paste("Histogram of", xname),
+  xlim = range(breaks),
+  ylim = NULL,
+  xlab = xname,
+  ylab,
+  axes = TRUE,
+  plot = TRUE,
+  labels = FALSE,
+  nclass = NULL,
+  warn.unused = TRUE,
+  ...
+)
 
-hist_p(x, breaks = "Sturges", freq = NULL, probability = !freq,
-  include.lowest = TRUE, right = TRUE, density = NULL, angle = 45,
-  col = NULL, border = NULL, main = paste("Histogram of", xname),
-  xlim = range(breaks), ylim = NULL, xlab = xname, ylab,
-  axes = TRUE, plot = TRUE, labels = FALSE, nclass = NULL,
-  warn.unused = TRUE, ...)
+hist_p(
+  x,
+  breaks = "Sturges",
+  freq = NULL,
+  probability = !freq,
+  include.lowest = TRUE,
+  right = TRUE,
+  density = NULL,
+  angle = 45,
+  col = NULL,
+  border = NULL,
+  main = paste("Histogram of", xname),
+  xlim = range(breaks),
+  ylim = NULL,
+  xlab = xname,
+  ylab,
+  axes = TRUE,
+  plot = TRUE,
+  labels = FALSE,
+  nclass = NULL,
+  warn.unused = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x, breaks, freq, probability}{See \code{?graphics::hist.default}}
