@@ -20,6 +20,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -32,23 +34,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">prettyB</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -65,7 +61,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/jumpingrivers/prettyB/">
+  <a href="https://github.com/jumpingrivers/prettyB/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -83,36 +79,36 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="prettified-base-graphics" class="section level2">
-<h2 class="hasAnchor">
-<a href="#prettified-base-graphics" class="anchor"></a>Prettified Base Graphics</h2>
+<div class="section level2">
+<h2 id="prettified-base-graphics">Prettified Base Graphics<a class="anchor" aria-label="anchor" href="#prettified-base-graphics"></a>
+</h2>
 
 <p>Anyone who uses R Base graphics, have a 100 and 1 tweaks that they use to make the figures more presentable. This package aims to capture the tweaks in one place.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>The package is still being developed and the graphs are subject to change. The package is on CRAN and can be installed in the usual way</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"prettyB"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"prettyB"</span><span class="op">)</span></code></pre></div>
 <p>To install the dev version, try</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"jumpingrivers/prettyB"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jumpingrivers/prettyB"</span><span class="op">)</span></code></pre></div>
 <p>The package can then be loaded in the usual way</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/jumpingrivers/prettyB/">"prettyB"</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/jumpingrivers/prettyB/" class="external-link">"prettyB"</a></span><span class="op">)</span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
 <p>All plotting functions work exactly as before, with the same inputs. The difference is that the defaults have been changed. For example, compare</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">op</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Length</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">op</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Length</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span><span class="op">)</span>
 <span class="fu"><a href="reference/plot.prettyB.html">plot_p</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Length</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Width</span><span class="op">)</span>
 <span class="co">#&gt; </span></code></pre></div>
 <p><img src="reference/figures/README-plot-minimal-1.png" style="display: block; margin: auto;"></p>
-<p>When you first call a <strong>prettyB</strong>, it changes the underlying <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> and <code><a href="https://rdrr.io/r/grDevices/palette.html">palette()</a></code>. You can reset this via</p>
+<p>When you first call a <strong>prettyB</strong>, it changes the underlying <code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par()</a></code> and <code><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette()</a></code>. You can reset this via</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">prettyB</span><span class="fu">::</span><span class="fu"><a href="reference/reset_prettyB.html">reset_prettyB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>The core idea of <strong>prettyB</strong> is that no new arguments are introducted to the plot functions. This means, that no changes to existing code are required</p>
@@ -124,31 +120,31 @@
 <span class="co">#&gt; </span></code></pre></div>
 <p><img src="reference/figures/README-plot-minimal-full-1.png" style="display: block; margin: auto;"></p>
 </div>
-<div id="other-plots" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-plots" class="anchor"></a>Other plots</h2>
+<div class="section level2">
+<h2 id="other-plots">Other plots<a class="anchor" aria-label="anchor" href="#other-plots"></a>
+</h2>
 <p>The package also prettifies other functions</p>
 <ul>
 <li>
 <p>Histograms</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">z</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">rt</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">4</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">z</span>, main <span class="op">=</span> <span class="st">"The t-distribution"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">z</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html" class="external-link">rt</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">4</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">z</span>, main <span class="op">=</span> <span class="st">"The t-distribution"</span><span class="op">)</span>
 <span class="fu"><a href="reference/hist.prettyB.html">hist_p</a></span><span class="op">(</span><span class="va">z</span>, main <span class="op">=</span> <span class="st">"The t-distribution"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" style="display: block; margin: auto;"></p>
 </li>
 <li>
 <p>barplots</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">VADeaths</span>, main <span class="op">=</span> <span class="st">"Death Rates in Virginia"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="va">VADeaths</span>, main <span class="op">=</span> <span class="st">"Death Rates in Virginia"</span><span class="op">)</span>
 <span class="fu"><a href="reference/barplot.prettyB.html">barplot_p</a></span><span class="op">(</span><span class="va">VADeaths</span>, main <span class="op">=</span> <span class="st">"Death Rates in Virginia"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-7-1.png" style="display: block; margin: auto;"></p>
 </li>
 </ul>
 </div>
-<div id="package-rationale" class="section level2">
-<h2 class="hasAnchor">
-<a href="#package-rationale" class="anchor"></a>Package Rationale</h2>
+<div class="section level2">
+<h2 id="package-rationale">Package Rationale<a class="anchor" aria-label="anchor" href="#package-rationale"></a>
+</h2>
 <p>This package is <strong>not</strong> a replacement for <strong>ggplot2</strong> or other R related plotting packages. Instead, it has a few simple aims</p>
 <ul>
 <li>provide package authors a low dependency method of making their plots look pretty</li>
@@ -156,69 +152,79 @@
 <li>provide a simple way for improving the look and feel of plots in teaching</li>
 </ul>
 <p>Since the generated plots by <strong>prettyB</strong> use standard base graphics, with no new arguments, this makes plots future proof. As a fall-back, just remove the <code>_p</code>.</p>
-<p>I picked up the general style a few years ago, but the book <a href="https://www.amazon.com/Fundamentals-Data-Visualization-Informative-Compelling/dp/1492031089/">Fundamentals of Data Visualization</a> has made it a bit more consist. The author also provided a free <a href="https://serialmentor.com/dataviz/">online</a> version.</p>
+<p>I picked up the general style a few years ago, but the book <a href="https://www.amazon.com/Fundamentals-Data-Visualization-Informative-Compelling/dp/1492031089/" class="external-link">Fundamentals of Data Visualization</a> has made it a bit more consist. The author also provided a free <a href="https://serialmentor.com/dataviz/" class="external-link">online</a> version.</p>
 </div>
-<div id="other-information" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-information" class="anchor"></a>Other information</h2>
+<div class="section level2">
+<h2 id="other-information">Other information<a class="anchor" aria-label="anchor" href="#other-information"></a>
+</h2>
 <ul>
-<li>If you have any suggestions or find bugs, please use the github <a href="https://github.com/jumpingrivers/prettyB/issues">issue tracker</a>
+<li>If you have any suggestions or find bugs, please use the github <a href="https://github.com/jumpingrivers/prettyB/issues" class="external-link">issue tracker</a>
 </li>
 <li>Feel free to submit pull requests</li>
 </ul>
 <hr>
-<p>Development of this package was supported by <a href="https://www.jumpingrivers.com">Jumping Rivers</a></p>
+<p>Development of this package was supported by <a href="https://www.jumpingrivers.com" class="external-link">Jumping Rivers</a></p>
 </div>
 
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=prettyB">https://​cloud.r-project.org/​package=prettyB</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/jumpingrivers/prettyB/">https://​github.com/​jumpingrivers/​prettyB/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/jumpingrivers/prettyB/issues">https://​github.com/​jumpingrivers/​prettyB/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=prettyB" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/jumpingrivers/prettyB/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/jumpingrivers/prettyB/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://www.r-project.org/Licenses/GPL-2">GPL-2</a> | <a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a>
+<a href="https://www.r-project.org/Licenses/GPL-2" class="external-link">GPL-2</a> | <a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a>
 </li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing prettyB</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Colin Gillespie <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/jumpingrivers/prettyB/actions"><img src="https://github.com/jumpingrivers/prettyB/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://cran.r-project.org/package=prettyB"><img src="http://www.r-pkg.org/badges/version/prettyB" alt="CRAN"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://codecov.io/github/jumpingrivers/prettyB?branch=master"><img src="https://codecov.io/gh/jumpingrivers/prettyB/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
-<li><a href="https://cran.r-project.org/package=prettyB"><img src="http://cranlogs.r-pkg.org/badges/prettyB?color=brightgreen" alt="Downloads"></a></li>
+<li><a href="https://github.com/jumpingrivers/prettyB/actions" class="external-link"><img src="https://github.com/jumpingrivers/prettyB/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://cran.r-project.org/package=prettyB" class="external-link"><img src="http://www.r-pkg.org/badges/version/prettyB" alt="CRAN"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://codecov.io/github/jumpingrivers/prettyB?branch=master" class="external-link"><img src="https://codecov.io/gh/jumpingrivers/prettyB/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="https://cran.r-project.org/package=prettyB" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/prettyB?color=brightgreen" alt="Downloads"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Colin Gillespie.</p>
+  <p></p>
+<p>Developed by Colin Gillespie.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -226,6 +232,8 @@
 
   
 
+
+  
 
   </body>
 </html>

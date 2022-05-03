@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">prettyB</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/jumpingrivers/prettyB/">
+  <a href="https://github.com/jumpingrivers/prettyB/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -83,19 +79,19 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to prettyB</h1>
-                        <h4 class="author">Colin Gillespie</h4>
+                        <h4 data-toc-skip class="author">Colin Gillespie</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/jumpingrivers/prettyB/blob/master/vignettes/introduction.Rmd"><code>vignettes/introduction.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jumpingrivers/prettyB/blob/HEAD/vignettes/introduction.Rmd" class="external-link"><code>vignettes/introduction.Rmd</code></a></small>
       <div class="hidden name"><code>introduction.Rmd</code></div>
 
     </div>
 
     
     
-<div id="introduction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p>The <strong>prettyB</strong> changes the default values of some standard plotting functions. It is <strong>not</strong> a replacement for <strong>ggplot2</strong> (or other plotting packages), instead, it’s meant to just make the base graphics a little bit nicer. Due to the underlying structure of base graphics &amp; S3 objects, some things aren’t possible. In particular, changing how non-exported plot-methods are displayed.</p>
 <p>The general idea is the argument signitures are exactly the same as base graphics. But there are just a bit prettier. The current methods that are available are</p>
 <ul>
@@ -105,55 +101,55 @@
 <li><code><a href="../reference/hist.prettyB.html">hist_p()</a></code></li>
 </ul>
 </div>
-<div id="histogram-examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#histogram-examples" class="anchor"></a>Histogram examples</h2>
+<div class="section level2">
+<h2 id="histogram-examples">Histogram examples<a class="anchor" aria-label="anchor" href="#histogram-examples"></a>
+</h2>
 <p>The important point to note with this histogram method is the <code>breaks</code> argument now has a new default. Instead of <code>breaks = "Sturges"</code>, the default is <code>breaks = "fd"</code>. In general, this is a better default (but not always)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Lognormal.html">rlnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Lognormal.html" class="external-link">rlnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="fu"><a href="../reference/hist.prettyB.html">hist_p</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
 <p><img src="introduction_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 <p>Standard arguments work as well</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">y</span>, main <span class="op">=</span> <span class="st">"Base Graphics"</span>, sub <span class="op">=</span> <span class="st">"Sub heading"</span>, 
+<code class="sourceCode R"><span class="va">y</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">y</span>, main <span class="op">=</span> <span class="st">"Base Graphics"</span>, sub <span class="op">=</span> <span class="st">"Sub heading"</span>, 
                        xlab <span class="op">=</span> <span class="st">"x-axis"</span>, ylab <span class="op">=</span> <span class="st">"y-axis"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/hist.prettyB.html">hist_p</a></span><span class="op">(</span><span class="va">y</span>, main <span class="op">=</span> <span class="st">"prettyB"</span>,  sub <span class="op">=</span> <span class="st">"Sub heading"</span>, xlab <span class="op">=</span> <span class="st">"x-axis"</span>, ylab <span class="op">=</span> <span class="st">"y-axis"</span><span class="op">)</span></code></pre></div>
 <p><img src="introduction_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 <p>Colours and frequencies also work as is expected</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">z</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">rt</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">4</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">z</span>, col <span class="op">=</span> <span class="st">"grey60"</span>, freq <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">z</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html" class="external-link">rt</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">4</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">z</span>, col <span class="op">=</span> <span class="st">"grey60"</span>, freq <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="../reference/hist.prettyB.html">hist_p</a></span><span class="op">(</span><span class="va">z</span>, col <span class="op">=</span> <span class="st">"grey60"</span>, freq <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p><img src="introduction_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
-<div id="barplot-examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#barplot-examples" class="anchor"></a>Barplot examples</h2>
-<p>The <code><a href="https://rdrr.io/r/graphics/barplot.html">barplot()</a></code> has an amazing number of different configurations.</p>
+<div class="section level2">
+<h2 id="barplot-examples">Barplot examples<a class="anchor" aria-label="anchor" href="#barplot-examples"></a>
+</h2>
+<p>The <code><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot()</a></code> has an amazing number of different configurations.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">op</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">op</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/reset_prettyB.html">reset_prettyB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"grDevices"</span><span class="op">)</span> <span class="co"># for colours</span>
-<span class="va">tN</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="fl">100</span>, lambda <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">tN</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"grDevices"</span><span class="op">)</span> <span class="co"># for colours</span>
+<span class="va">tN</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">100</span>, lambda <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="va">tN</span><span class="op">)</span>
 <span class="fu"><a href="../reference/barplot.prettyB.html">barplot_p</a></span><span class="op">(</span><span class="va">tN</span><span class="op">)</span></code></pre></div>
 <p><img src="introduction_files/figure-html/unnamed-chunk-5-1.png" width="100%"></p>
-<p>The following examples are taken directly from the example page of <code><a href="https://rdrr.io/r/graphics/barplot.html">?barplot</a></code>. This means that sometimes the colours clash.</p>
+<p>The following examples are taken directly from the example page of <code><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">?barplot</a></code>. This means that sometimes the colours clash.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/reset_prettyB.html">reset_prettyB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">r</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">tN</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span>
+<span class="va">r</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="va">tN</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#- type = "h" plotting *is* 'bar'plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">r</span>, <span class="va">tN</span>, type <span class="op">=</span> <span class="st">"h"</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="va">r</span> <span class="op">=</span> <span class="fu"><a href="../reference/barplot.prettyB.html">barplot_p</a></span><span class="op">(</span><span class="va">tN</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">r</span>, <span class="va">tN</span>, type <span class="op">=</span> <span class="st">"h"</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">r</span> <span class="op">=</span> <span class="fu"><a href="../reference/barplot.prettyB.html">barplot_p</a></span><span class="op">(</span><span class="va">tN</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#- type = "h" plotting *is* 'bar'plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">r</span>, <span class="va">tN</span>, type <span class="op">=</span> <span class="st">"h"</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">r</span>, <span class="va">tN</span>, type <span class="op">=</span> <span class="st">"h"</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="introduction_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 <p>Spacing and titles still work</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/reset_prettyB.html">reset_prettyB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">tN</span>, space <span class="op">=</span> <span class="fl">1.5</span>, axisnames <span class="op">=</span> <span class="cn">FALSE</span>,
+<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="va">tN</span>, space <span class="op">=</span> <span class="fl">1.5</span>, axisnames <span class="op">=</span> <span class="cn">FALSE</span>,
         sub <span class="op">=</span> <span class="st">"barplot(..., space= 1.5, axisnames = FALSE)"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/barplot.prettyB.html">barplot_p</a></span><span class="op">(</span><span class="va">tN</span>, space <span class="op">=</span> <span class="fl">1.5</span>, axisnames <span class="op">=</span> <span class="cn">FALSE</span>,
         sub <span class="op">=</span> <span class="st">"barplot(..., space= 1.5, axisnames = FALSE)"</span><span class="op">)</span></code></pre></div>
@@ -161,26 +157,26 @@
 <p>So does the <code>beside</code> argument.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/reset_prettyB.html">reset_prettyB</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">VADeaths</span>, beside <span class="op">=</span> <span class="cn">TRUE</span>,
-        col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="st">"mistyrose"</span>, <span class="st">"lightcyan"</span>,
+<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="va">VADeaths</span>, beside <span class="op">=</span> <span class="cn">TRUE</span>,
+        col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="st">"mistyrose"</span>, <span class="st">"lightcyan"</span>,
                 <span class="st">"lavender"</span>, <span class="st">"cornsilk"</span><span class="op">)</span>,
-        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">VADeaths</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
+        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">VADeaths</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/barplot.prettyB.html">barplot_p</a></span><span class="op">(</span><span class="va">VADeaths</span>, beside <span class="op">=</span> <span class="cn">TRUE</span>,
-        col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="st">"mistyrose"</span>, <span class="st">"lightcyan"</span>,
+        col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="st">"mistyrose"</span>, <span class="st">"lightcyan"</span>,
                 <span class="st">"lavender"</span>, <span class="st">"cornsilk"</span><span class="op">)</span>,
-        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">VADeaths</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">VADeaths</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="introduction_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
-<div id="other-plotting-methods" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-plotting-methods" class="anchor"></a>Other plotting methods</h2>
+<div class="section level2">
+<h2 id="other-plotting-methods">Other plotting methods<a class="anchor" aria-label="anchor" href="#other-plotting-methods"></a>
+</h2>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="../reference/plot.prettyB.html">plot_p</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, xlab <span class="op">=</span> <span class="st">"X"</span>, ylab <span class="op">=</span> <span class="st">"Y"</span><span class="op">)</span></code></pre></div>
-<pre><code>## </code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/plot.prettyB.html">plot_p</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, xlab <span class="op">=</span> <span class="st">"X"</span>, ylab <span class="op">=</span> <span class="st">"Y"</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## </span></code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/boxplot.prettyB.html">boxplot_p</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, horizontal <span class="op">=</span> <span class="cn">TRUE</span>, 
+<code class="sourceCode R"><span class="fu"><a href="../reference/boxplot.prettyB.html">boxplot_p</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, horizontal <span class="op">=</span> <span class="cn">TRUE</span>, 
           main <span class="op">=</span> <span class="st">"A boxplot"</span><span class="op">)</span></code></pre></div>
 <p><img src="introduction_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
@@ -197,11 +193,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Colin Gillespie.</p>
+  <p></p>
+<p>Developed by Colin Gillespie.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -209,6 +207,8 @@
 
   
 
+
+  
 
   </body>
 </html>
